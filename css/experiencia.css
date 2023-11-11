@@ -1,3 +1,6 @@
+a {
+    color: inherit;
+}
 .experiencia {
     margin: 0 auto;
     padding: 1.5rem;
@@ -74,6 +77,20 @@
     position: absolute;
     left: -50px;
     top: 20px;
+}
+
+.exp-lista-item h2 {
+    gap: 0.4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 span {
+    color: gray;
+    font-weight: 100;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+
 }
 
 @media (max-width: 800px) {

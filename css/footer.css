@@ -45,6 +45,15 @@
     font-size: 1.5rem;
 }
 
+.redes {
+    width: fit-content;
+}
+
+.redes:hover {
+    transition: .5s;
+    transform: scale(1.1);
+}
+
 @media (max-width: 800px) {
     .footer-conteiner {
         padding-bottom: 3rem;
