@@ -31,3 +31,59 @@ ul, h1, h2, p, li {
     font-size: 8rem;
 }
 
+.show {
+    display: block;
+}
+
+#btn-mobile {
+    display: none;
+  }
+
+  .hover:hover {
+    transition: 0.3s;
+    transform: scale(1.02, 1.02);
+  }
+
+  @media (max-width: 900px) {
+    #btn-mobile {
+        display:flex;
+        padding: .5rem 1rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 1rem;
+     }
+  
+     #hamburguer {
+        display: block;
+        width: 25px;
+        border-top: 4px solid;
+  
+     }
+  
+     #hamburguer::after,
+     #hamburguer::before{
+        content: '';
+        position: relative;
+  
+        transition: .3s;
+        margin-top: 5px;
+        display: block;
+        width: 25px;
+        height: 4px;
+        background-color: currentColor;
+     }
+  }
+ 
+
+  @media (max-width: 500px) {
+    #btn-mobile {
+        zoom: 120%;
+     }
+     
+    .botoes {
+        zoom: 80%;
+     }
+  }
+
+

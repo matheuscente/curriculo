@@ -13,7 +13,7 @@
 }
 
 .formacao-conteiner .titulo-maior {
-    color: #000;
+    color: var(--c13);
 }
 
 .formacao-conteiner .p-principal {
@@ -21,7 +21,7 @@
 }
 
 .formacao-conteiner .p-principal strong {
-    color:#fff;
+    color:var(--cor0);
 }
 
 .formacoes {
@@ -35,7 +35,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: #000;
+    background-color: var(--c13);
     padding: 1.2rem;
     border-radius: 4px;
 }
@@ -46,7 +46,7 @@
     flex: 1;
     margin-top: 0px;
     margin-bottom: 3rem;
-    color: #fff;
+    color: var(--cor0);
 }
 
 .formacoes-item-titulo::before {
@@ -114,7 +114,7 @@
 }
 
 .extra-item p {
-    color: #fff;
+    color: var(--cor0);
 }
 
 .extra-item span {
@@ -145,7 +145,7 @@
 
     .formacao-conteiner .titulo-maior {
         font-size: 3rem;
-        color: #fff;
+        color: var(--cor0);
         text-transform: capitalize;
     }
 

@@ -16,27 +16,73 @@ header {
     align-items: center;
 }
 
-.header-menu {
+.header-list {
     display: flex;
     gap: 3rem;
     flex-wrap: wrap;
 }
 
-.header-menu a{
+.header-list a{
     flex: 1;
     font-size: 1.1rem;
-    color: var(--c11)
+    color: var(--c11);
+    width: 100%;
+    padding: 10px;
+    display: inline-block;
 }
 
-.header-menu li:hover {
-    transition: 0.3s;
+.header-list li:hover {
     cursor: pointer;
-    scale: 1.1;
 }
 
 @media (max-width: 900px) {
+
+    .nav-header.show #hamburguer {
+        border-top-color: transparent;
+     }
+
+
+     .nav-header.show #hamburguer::before {
+        transform: rotate(135deg);
+     }
+
+  
+     .nav-header.show #hamburguer::after {
+        transform: rotate(-135deg);
+        top: -8.5px;
+     }
+
+
+    .header-list li {
+      padding: 1rem 0;
+      margin: 0 1rem;
+      border-bottom: 2px solid rgba(0,0,0, .05);
+   }
+
+
+   .header-list {
+      display: block;
+      position: absolute;
+      width: 100%;
+      top: 120px;
+      right: 0px;
+      height: 0px;
+      z-index: 99;
+      transition: .6s;
+      background-color: var(--c0);
+      visibility: hidden;
+      overflow-y: hidden;
+   }
+
+
+   .nav-header.show .header-list {
+      overflow-y: auto;
+      visibility: visible;
+      height: calc(100vh - 100px);
+ }
+
     .menu {
-        flex-direction: column;
+
         padding: 1.2rem;
         gap: 0.8rem;
     }

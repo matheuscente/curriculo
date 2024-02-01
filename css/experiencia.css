@@ -59,7 +59,7 @@ a {
     color: var(--c12);
     font-size: .9rem;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: var(--c0);
     padding: .5rem 1rem;
 }
 

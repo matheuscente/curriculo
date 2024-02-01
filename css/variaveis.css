@@ -1,6 +1,6 @@
 :root {
                 /*cores*/
-
+    --c0: #fff;
     --c1: #F5F5F5;
     --c2: #F0F0F0;
     --c3: #E0E0E0;
@@ -13,6 +13,7 @@
     --c10: #525252;
     --c11: #3D3D3D;
     --c12: #141414;
+    --c13: #000;
     --gradient: linear-gradient(#B6F829, #67DD0A);
     --g2: linear-gradient(#B629F8, #800ADD);
     
