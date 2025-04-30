@@ -1,10 +1,13 @@
 @import "variaveis.css";
 @import "global.css";
-@import "header.css";
-@import "apresentacao.css";
-@import "experiencia.css";
-@import "formacao.css";
-@import "footer.css";
+@import "./index/header.css";
+@import "./index/apresentacao.css";
+@import "./index/experiencia.css";
+@import "./index/formacao.css";
+@import "./index/footer.css";
+@import "./admin/header.css";
+@import "./admin/project.css";
+@import "./admin/footer.css"
 
 
 

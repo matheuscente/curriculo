@@ -1,0 +1,53 @@
+.project-bg {
+    background-color: var(--c2);
+    max-width: 520px;
+}
+
+.exp-lista-item.padding-bottom-none.margin-bottom-none {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.items-list {
+    overflow-y: scroll;
+    max-width: 1300px;
+    max-height: 400px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-top: none;
+    border-radius: 4px;
+    box-shadow: .01px .01px 5px .01px black;
+}
+
+.exp-lista-admin {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+
+.area-item.project-bg {
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    width: 300px;
+}
+
+.area-item.project-bg .item-options {
+    margin-top: 0;
+}
+
+.admin-title {
+    margin-bottom: 1rem;
+}
+
+ .items-list .project-bg {
+
+    border-radius: 5px;
+}
+
+.button-item-options {
+    cursor: pointer;
+}

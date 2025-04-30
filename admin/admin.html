@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Administrador</title>
+    <link rel="preload" href="../css/style.css" as="style" />
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type='module' src="../js//admin/projects.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header,
+
+
+        main {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        .project,
+        .area,
+        .tech {
+            background: #f3f4f6;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .footer-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="admin-header">
+        <div class="admin-header-conteiner">
+            <span>Administrador</span>
+            <button class="header-button" onclick="handleLogout()">Sair</button>
+        </div>
+
+    </header>
+    <main class="content">
+        <section id="projects">
+            <h2 class="admin-title">Projetos</h2>
+            <ul class="items-list">
+                
+            </ul>
+        </section>
+
+        <section id="areas">
+            <h2 class="admin-title">Áreas</h2>
+            <ul class="items-list">
+             
+            </ul>
+
+
+
+
+        </section>
+
+        <section id="technologies">
+            <h2 class="admin-title">Tecnologias</h2>
+            <ul class="items-list">
+
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="admin-footer">
+        <div class="footer-icon">🔗</div>
+        <div>Vicente Matheus dos Santos Souza</div>
+    </footer>
+
+</body>
+
+</html>

@@ -44,6 +44,21 @@ ul, h1, h2, p, li {
     transform: scale(1.02, 1.02);
   }
 
+  .content {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem
+  }
+
+  .item-options {
+    width: fit-content;
+    margin: 20px auto 0 auto;
+    display: flex;
+    gap: 2rem;
+    padding: .5rem;
+  }
+
   @media (max-width: 900px) {
     #btn-mobile {
         display:flex;
