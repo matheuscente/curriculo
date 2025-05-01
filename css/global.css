@@ -48,7 +48,11 @@ ul, h1, h2, p, li {
     max-width: 1200px;
     display: flex;
     flex-direction: column;
-    gap: 3rem
+    flex: 1;
+    padding: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-items: center;
   }
 
   .item-options {

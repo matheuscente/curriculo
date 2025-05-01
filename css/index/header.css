@@ -1,6 +1,4 @@
-header {
-    max-width: 1200px;
-}
+
 .logo a{
     color: var(--c12);
     font-size: 2.5rem;
@@ -76,7 +74,7 @@ header {
 
 
    .nav-header.show .header-list {
-      overflow-y: auto;
+      overflow-y: hidden;
       visibility: visible;
       height: calc(100vh - 100px);
  }

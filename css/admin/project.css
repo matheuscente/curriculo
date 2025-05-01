@@ -1,3 +1,14 @@
+html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    overflow-x: hidden
+}
+
 .project-bg {
     background-color: var(--c2);
     max-width: 520px;
@@ -13,12 +24,17 @@
     max-width: 1300px;
     max-height: 400px;
     display: flex;
+    justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
     padding: 10px;
     border-top: none;
     border-radius: 4px;
     box-shadow: .01px .01px 5px .01px black;
+}
+
+section {
+    margin-bottom: 2rem;
 }
 
 .exp-lista-admin {
@@ -32,15 +48,15 @@
     display: flex;
     gap: 1rem;
     flex-direction: column;
-    width: 300px;
+    max-width: 300px;
+}
+
+.area-item.project-bg .titulo1 {
+    text-align: center;
 }
 
 .area-item.project-bg .item-options {
     margin-top: 0;
-}
-
-.admin-title {
-    margin-bottom: 1rem;
 }
 
  .items-list .project-bg {
@@ -49,5 +65,39 @@
 }
 
 .button-item-options {
+    border-radius: 5px;
+    background-color: #ccc;
+    padding: .5rem 1rem;
+    border: none;
     cursor: pointer;
+}
+
+
+.footer-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.item-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+
+
+.item-header-link:hover {
+    background-color: rgba(0, 0, 0, 0.153);
+}
+
+.content > .items-list {
+    max-width: inherit;
+    box-shadow: none;
+    overflow: hidden;
+    max-height: inherit;
+} 
+
+.modal {
+    z-index: 999;
 }

@@ -7,7 +7,8 @@
 @import "./index/footer.css";
 @import "./admin/header.css";
 @import "./admin/project.css";
-@import "./admin/footer.css"
+@import "./admin/footer.css";
+@import "./admin/deleteProjectModal.css"
 
 
 

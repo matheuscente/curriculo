@@ -69,6 +69,7 @@ a {
     align-items: start;
     gap: 1rem;;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
 

@@ -11,8 +11,9 @@
     <script type='module' src="../js/admin/projects.js" defer></script>
     <script type='module' src="../js/admin/createProject.js" defer></script>
     <script type='module' src="../js/admin/editProject.js" defer></script>
-    <script type='module' src="../js/admin/deleteProject.js"></script>
+    <script type='module' src="../js/admin/deleteProject.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
 </head>
 
@@ -20,7 +21,7 @@
     <header class="admin-header">
         <div class="admin-header-conteiner">
             <span>Administrador</span>
-            <nav >
+            <nav>
                 <ul class="header-nav">
                     <li class="header-nav-item"><a href="./projects.html">projetos</a></li>
 
@@ -30,47 +31,16 @@
                     <li class="header-nav-item"><button class="header-button" onclick="handleLogout()">Sair</button></li>
                 </ul>
             </nav>
-
         </div>
 
     </header>
     <main class="content">
-        <section id="projects">
             <div class="item-header">
                 <h2 class="admin-title">Projetos</h2>
-                <a class="projects button-item-options" href="./projects.html">editar itens</a>
-            </div>
+                <button id="projects" class="post projects project-create button-item-options">criar projeto</button></div>
             <ul class="items-list">
-
+                
             </ul>
-        </section>
-
-        <section id="areas">
-            <div class="item-header">
-                <h2 class="admin-title">Áreas</h2>
-                <a class="areas button-item-options" href="./areas.html">editar itens</a>
-            </div>
-
-            <ul class="items-list">
-
-            </ul>
-
-
-
-
-        </section>
-
-        <section id="technologies">
-            <div class="item-header">
-                <h2 class="admin-title">Tecnologias</h2>
-                <a class="technologies button-item-options" href="./technologies.html">editar itens</a>
-            </div>
-
-            <ul class="items-list">
-
-            </ul>
-        </section>
-
     </main>
 
     <footer class="admin-footer">
