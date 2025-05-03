@@ -1,6 +1,4 @@
-
-import {getData} from '../admin/getData.js'
-
+import { getData } from "../admin/getData.js";
 
 //recebe as tecnologias e retorna uma lista de LIs
 export function listTechs(techs) {
@@ -62,7 +60,6 @@ export function closeModal() {
   const modal = document.querySelector(".modal");
   modal.remove();
 }
-
 
 //template dos formularios de edição
 async function modalTemplate(template) {
@@ -128,123 +125,149 @@ async function modalTemplate(template) {
 //faz umaa requisição com o token salvo, caso não autorizado, direciona pra pag unauthorized
 export async function unauthorized() {
   try {
-      const token = sessionStorage.getItem('token')
-    
-      const response = await getData(
-        "http://localhost:3000/api/v1/users/info",
-       );
-      if (response.status === 200 || response.status === 201) {
-        return
-      }
-    } catch (err) {
-      if (err.status === 401) {
-        window.location.href = "/unauthorized";
+    const token = sessionStorage.getItem("token");
 
-      }
+    const response = await getData("http://localhost:3000/api/v1/users/info");
+    if (response.status === 200 || response.status === 201) {
+      return;
     }
+  } catch (err) {
+    if (err.status === 401) {
+      window.location.href = "/unauthorized";
+    }
+  }
 }
 
+//faz o logout e limpa o storage
 
-
-export async function openModal(target, action) {
+export async function logout() {
   try {
-    const main = document.querySelector(".content");
-    const modal = document.createElement("div");
-    modal.classList.add("modal");
-    modal.innerHTML = await modalTemplate(target.id);
+    const refreshToken = sessionStorage.getItem("refreshToken");
 
-    main.appendChild(modal);
-    const form = modal.querySelector("form");
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      main.removeChild(modal);
+    await axios.post("http://localhost:3000/api/v1/session/logout", {
+      refreshToken
+    }, {
+      headers: {
+        Authorization: sessionStorage.getItem("token")
+      }
+    });
 
-      const formData = new FormData(form);
+    sessionStorage.removeItem("token")
+    sessionStorage.removeItem("refreshToken")
 
-      const checkboxes = form.querySelectorAll(
-        'input[name="tecnologias"]:checked'
-      );
-      const tecnologiasSelecionadas = Array.from(checkboxes).map((cb) => {
-        return Number.parseInt(cb.value);
-      });
+    window.location.href ='/admin/login.html'
 
-      if (action === "post") {
-        let data;
-        if (target.id === "projects") {
-          data = {
-            title: formData.get("titulo"),
-            description: formData.get("descricao"),
-            year: formData.get("ano"),
-            technologies: tecnologiasSelecionadas,
-            area: formData.get("area"),
-            url: formData.get("url"),
-            inProgress: formData.get("progresso") === "true"
-          };
-        } else if (target.id === "areas" || target.id === "technologies") {
-          data = {
-            title: formData.get("titulo"),
-            description: formData.get("descricao"),
-          };
+  } catch (err) {
+    console.log("erro ao fazer logout");
+  }
+}
 
-          if (!data.description) {
-            delete data.description;
-          }
-        }
-        try {
-          await axios[action](
-            `http://localhost:3000/api/v1/${target.id}/${target.value}`,
-            data, {
-              headers: {
-                Authorization: sessionStorage.getItem('token')
-              }
-            }
-          );
-          window.location.reload();
-        } catch (err) {
-          console.log(err);
-        }
-      } else if (action === "patch") {
-        const data = {
+//abre o modal
+export async function openModal(target) {
+  const main = document.querySelector(".content");
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  modal.innerHTML = await modalTemplate(target.id);
+
+  main.appendChild(modal);
+}
+
+//recebe o item clicado e a ação desejada. Faz a requisição de acordo com a ação e id do target
+export async function sendModalData(target, action) {
+  console.log(target);
+  const modal = document.querySelector(".modal");
+  const form = modal.querySelector("form");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    closeModal();
+
+    const formData = new FormData(form);
+
+    const checkboxes = form.querySelectorAll(
+      'input[name="tecnologias"]:checked'
+    );
+    const tecnologiasSelecionadas = Array.from(checkboxes).map((cb) => {
+      return Number.parseInt(cb.value);
+    });
+
+    if (action === "post") {
+      let data;
+      if (target.id === "projects") {
+        data = {
           title: formData.get("titulo"),
           description: formData.get("descricao"),
           year: formData.get("ano"),
           technologies: tecnologiasSelecionadas,
           area: formData.get("area"),
-          inProgress: formData.get("progresso")
+          url: formData.get("url"),
+          inProgress: formData.get("progresso") === "true",
         };
-        for (let field in data) {
-          if (data[field]) {
-            const update = {
-              field: field,
-              value: data[field],
-            };
-            try {
-              await axios[action](
-                `http://localhost:3000/api/v1/${target.id}/${target.value}`,
-                update, {
-                  headers: {
-                    Authorization: sessionStorage.getItem('token')
-                  }
-                }
-              );
-            } catch (err) {
-              console.log(err);
-            }
+      } else if (target.id === "areas" || target.id === "technologies") {
+        data = {
+          title: formData.get("titulo"),
+          description: formData.get("descricao"),
+        };
+
+        if (!data.description) {
+          delete data.description;
+        }
+      }
+      try {
+        await axios[action](
+          `http://localhost:3000/api/v1/${target.id}/${target.value}`,
+          data,
+          {
+            headers: {
+              Authorization: sessionStorage.getItem("token"),
+            },
+          }
+        );
+        window.location.reload();
+      } catch (err) {
+        console.log(err);
+      }
+    } else if (action === "patch") {
+      const data = {
+        title: formData.get("titulo"),
+        description: formData.get("descricao"),
+        year: formData.get("ano"),
+        technologies: tecnologiasSelecionadas,
+        area: formData.get("area"),
+        inProgress: formData.get("progresso"),
+      };
+      for (let field in data) {
+        if (data[field]) {
+          const update = {
+            field: field,
+            value: data[field],
+          };
+          try {
+            await axios[action](
+              `http://localhost:3000/api/v1/${target.id}/${target.value}`,
+              update,
+              {
+                headers: {
+                  Authorization: sessionStorage.getItem("token"),
+                },
+              }
+            );
+          } catch (err) {
+            console.log(err);
           }
         }
-        window.location.reload();
       }
-    });
-  } catch (err) {
-    console.log(err);
-  }
+      window.location.reload();
+    }
+  });
 }
 
 //template de projeto
 export function project(item, template) {
   return `
       <div class="exp-lista-item padding-bottom-none margin-bottom-none">
-          <h2 class="titulo1">${item.title}<span>${item.inProgress === true ? "em andamento" : "finalizado"}</span> <span>${item.year}</span></h2>
+          <h2 class="titulo1">${item.title}<span>${
+    item.inProgress === true ? "em andamento" : "finalizado"
+  }</span> <span>${item.year}</span></h2>
           <p class="exp-p">${item.description || ""}</p>
           <h2 class="titulo2">Desenvolvedor ${item.area.title}</h2>
   
@@ -277,6 +300,7 @@ export function techAndArea(item, template) {
                       </div>`;
 }
 
+//seleciona os itens de acordo com o pathName, faz a requisição pro bd e cria os itens do DOM
 export async function attItems(url, template) {
   let projectSession;
   let itemClass;
@@ -320,8 +344,7 @@ export async function attItems(url, template) {
 
   try {
     let data = await getData(url);
-    data = data.data
-    console.log(data)
+    data = data.data;
     if (projectSession) {
       data.forEach((item) => {
         const li = document.createElement("li");
@@ -352,7 +375,6 @@ export async function attItems(url, template) {
     }
   }
 }
-
 
 //Modal de confirmação de exclusão
 export function showDeleteConfirmationModal(onConfirm) {

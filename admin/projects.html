@@ -12,15 +12,14 @@
     <script type='module' src="../js/admin/createProject.js" defer></script>
     <script type='module' src="../js/admin/editProject.js" defer></script>
     <script type='module' src="../js/admin/deleteProject.js" ></script>
+    <script type='module' src="../js/admin/header.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
 </head>
 
 <body>
     <header class="admin-header">
         <div class="admin-header-conteiner">
-            <span>Administrador</span>
+            <span id="user-type">Administrador</span>
             <nav>
                 <ul class="header-nav">
                     <li class="header-nav-item"><a href="./projects.html">projetos</a></li>
@@ -28,7 +27,7 @@
                     <li class="header-nav-item"><a href="./areas.html">areas</a></li>
 
                     <li class="header-nav-item"><a href="./technologies.html">tecnologias</a></li>
-                    <li class="header-nav-item"><button class="header-button" onclick="handleLogout()">Sair</button></li>
+                    <li class="header-nav-item"><button class="header-button">Sair</button></li>
                 </ul>
             </nav>
         </div>
@@ -37,7 +36,7 @@
     <main class="content">
             <div class="item-header">
                 <h2 class="admin-title">Projetos</h2>
-                <button id="projects" class="post projects project-create button-item-options">criar projeto</button></div>
+                <button id="projects" class="post project-create button-item-options">criar projeto</button></div>
             <ul class="items-list">
                 
             </ul>

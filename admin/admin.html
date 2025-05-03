@@ -12,6 +12,7 @@
     <script type='module' src="../js/admin/createProject.js" defer></script>
     <script type='module' src="../js/admin/editProject.js" defer></script>
     <script type='module' src="../js/admin/deleteProject.js" defer></script>
+    <script type='module' src="../js/admin/header.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
@@ -19,15 +20,16 @@
 <body style="display:none" onload="document.body.style.display='block'">
     <header class="admin-header">
         <div class="admin-header-conteiner">
-            <span id="userType">Administrador</span>
-            <nav >
+            <span id="user-type">Administrador</span>
+            <nav>
                 <ul class="header-nav">
                     <li class="header-nav-item"><a href="./projects.html">projetos</a></li>
 
                     <li class="header-nav-item"><a href="./areas.html">areas</a></li>
 
                     <li class="header-nav-item"><a href="./technologies.html">tecnologias</a></li>
-                    <li class="header-nav-item"><button class="header-button" onclick="handleLogout()">Sair</button></li>
+                    <li class="header-nav-item"><button class="header-button">Sair</button>
+                    </li>
                 </ul>
             </nav>
 
@@ -38,7 +40,7 @@
         <section id="projects">
             <div class="item-header">
                 <h2 class="admin-title">Projetos</h2>
-                <a class="projects button-item-options" href="./projects.html">editar itens</a>
+                <a class=" button-item-options" href="./projects.html">editar itens</a>
             </div>
             <ul class="items-list">
 
@@ -48,7 +50,7 @@
         <section id="areas">
             <div class="item-header">
                 <h2 class="admin-title">Áreas</h2>
-                <a class="areas button-item-options" href="./areas.html">editar itens</a>
+                <a class=" button-item-options" href="./areas.html">editar itens</a>
             </div>
 
             <ul class="items-list">
@@ -63,7 +65,7 @@
         <section id="technologies">
             <div class="item-header">
                 <h2 class="admin-title">Tecnologias</h2>
-                <a class="technologies button-item-options" href="./technologies.html">editar itens</a>
+                <a class=" button-item-options" href="./technologies.html">editar itens</a>
             </div>
 
             <ul class="items-list">

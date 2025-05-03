@@ -1,4 +1,4 @@
-import { showDeleteConfirmationModal } from "./fns.js";
+import { showDeleteConfirmationModal, closeModal } from "./fns.js";
 
 document.addEventListener("click", async (event) => {
   console.log(event.target)
