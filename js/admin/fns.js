@@ -1,5 +1,8 @@
-import exp from "../exp/exp.js";
 
+import {getData} from '../admin/getData.js'
+
+
+//recebe as tecnologias e retorna uma lista de LIs
 export function listTechs(techs) {
   const list = techs.map((item) => {
     return `<li>${item.title}</li>`;
@@ -8,12 +11,14 @@ export function listTechs(techs) {
   return list;
 }
 
+//busca as areas no BD e retorna um array de option com cada area
+//se vazio, retorna um option informando que não há areas
 export async function getAreas() {
   const data = [
     '<option value="false" disabled selected>Selecione uma opção</option>',
   ];
   try {
-    let areas = await axios.get("http://localhost:3000/api/v1/areas");
+    let areas = await getData("http://localhost:3000/api/v1/areas");
     areas = areas.data;
 
     data.push(
@@ -30,9 +35,11 @@ export async function getAreas() {
   }
 }
 
+//busca as techs no BD e retorna um array de checkbox com cada tecnologia
+//se vazio, retorna span informando que não há techs
 export async function getTechs() {
   try {
-    let techs = await axios.get("http://localhost:3000/api/v1/technologies");
+    let techs = await getData("http://localhost:3000/api/v1/technologies");
     techs = techs.data;
 
     return techs.map((item) => {
@@ -50,13 +57,15 @@ export async function getTechs() {
   }
 }
 
+//remove modal com classe ".modal"
 export function closeModal() {
   const modal = document.querySelector(".modal");
   modal.remove();
 }
 
+
+//template dos formularios de edição
 async function modalTemplate(template) {
-  console.log(template);
   if (template === "projects") {
     return ` <div class="modal-project-overlay" id="modalProjectOverlay">
     <div class="modal-project-container">
@@ -116,6 +125,27 @@ async function modalTemplate(template) {
   }
 }
 
+//faz umaa requisição com o token salvo, caso não autorizado, direciona pra pag unauthorized
+export async function unauthorized() {
+  try {
+      const token = sessionStorage.getItem('token')
+    
+      const response = await getData(
+        "http://localhost:3000/api/v1/users/info",
+       );
+      if (response.status === 200 || response.status === 201) {
+        return
+      }
+    } catch (err) {
+      if (err.status === 401) {
+        window.location.href = "/unauthorized";
+
+      }
+    }
+}
+
+
+
 export async function openModal(target, action) {
   try {
     const main = document.querySelector(".content");
@@ -163,7 +193,11 @@ export async function openModal(target, action) {
         try {
           await axios[action](
             `http://localhost:3000/api/v1/${target.id}/${target.value}`,
-            data
+            data, {
+              headers: {
+                Authorization: sessionStorage.getItem('token')
+              }
+            }
           );
           window.location.reload();
         } catch (err) {
@@ -187,7 +221,11 @@ export async function openModal(target, action) {
             try {
               await axios[action](
                 `http://localhost:3000/api/v1/${target.id}/${target.value}`,
-                update
+                update, {
+                  headers: {
+                    Authorization: sessionStorage.getItem('token')
+                  }
+                }
               );
             } catch (err) {
               console.log(err);
@@ -202,6 +240,7 @@ export async function openModal(target, action) {
   }
 }
 
+//template de projeto
 export function project(item, template) {
   return `
       <div class="exp-lista-item padding-bottom-none margin-bottom-none">
@@ -224,6 +263,7 @@ export function project(item, template) {
       </div>`;
 }
 
+//template de area e tech
 export function techAndArea(item, template) {
   return `<h2 class="titulo1">${item.title}</h2>
                       <p class="exp-p">${item.description || ""}</p>
@@ -238,7 +278,6 @@ export function techAndArea(item, template) {
 }
 
 export async function attItems(url, template) {
-  const projects = new exp();
   let projectSession;
   let itemClass;
   let errCase;
@@ -280,7 +319,9 @@ export async function attItems(url, template) {
   }
 
   try {
-    const data = await projects.getData(url);
+    let data = await getData(url);
+    data = data.data
+    console.log(data)
     if (projectSession) {
       data.forEach((item) => {
         const li = document.createElement("li");
@@ -312,12 +353,14 @@ export async function attItems(url, template) {
   }
 }
 
+
+//Modal de confirmação de exclusão
 export function showDeleteConfirmationModal(onConfirm) {
   const modal = document.createElement("div");
   modal.classList.add("modal-confirm-overlay");
   modal.innerHTML = `
       <div class="modal-confirm-container">
-        <p class="modal-confirm-text">Você realmente deseja excluir este projeto?</p>
+        <p class="modal-confirm-text">Você realmente deseja excluir este item?</p>
         <div class="modal-confirm-buttons">
           <button class="confirm-no">Não</button>
           <button class="confirm-yes">Sim</button>

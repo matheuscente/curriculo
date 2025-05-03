@@ -6,7 +6,11 @@ document.addEventListener("click", async (event) => {
     
      showDeleteConfirmationModal(async () => {
       try {
-          await axios.delete(`http://localhost:3000/api/v1/${event.target.id}/${event.target.value}`);
+          await axios.delete(`http://localhost:3000/api/v1/${event.target.id}/${event.target.value}`, {
+            headers:{
+              Authorization: sessionStorage.getItem('token')
+            }
+          });
           window.location.reload();
         } catch (err) {
           console.error('Erro ao excluir projeto:', err);

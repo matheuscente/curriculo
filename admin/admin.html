@@ -11,15 +11,15 @@
     <script type='module' src="../js/admin/projects.js" defer></script>
     <script type='module' src="../js/admin/createProject.js" defer></script>
     <script type='module' src="../js/admin/editProject.js" defer></script>
-    <script type='module' src="../js/admin/deleteProject.js"></script>
+    <script type='module' src="../js/admin/deleteProject.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 
-<body>
+<body style="display:none" onload="document.body.style.display='block'">
     <header class="admin-header">
         <div class="admin-header-conteiner">
-            <span>Administrador</span>
+            <span id="userType">Administrador</span>
             <nav >
                 <ul class="header-nav">
                     <li class="header-nav-item"><a href="./projects.html">projetos</a></li>

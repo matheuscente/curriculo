@@ -1,5 +1,7 @@
 
-import {attItems} from './fns.js'
+import {attItems, unauthorized} from './fns.js'
+await unauthorized()
+
 if(window.location.pathname === "/admin/admin.html") {
   await attItems("http://localhost:3000/api/v1/projects", "projects");
   await attItems("http://localhost:3000/api/v1/technologies", "technologies");

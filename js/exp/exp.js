@@ -1,10 +1,8 @@
 import { listTechs } from "../admin/fns.js";
+export {getData} from '../admin/getData.js'
 
 export default class Exp {
-  async getData(url) {
-    const { data } = await axios.get(url);
-    return data;
-  }
+
 
   createLink(classList, href, target) {
     const link = document.createElement("a");

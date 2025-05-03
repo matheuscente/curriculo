@@ -1,14 +1,16 @@
+import {getData} from '../admin/getData.js'
 import Exp from '../exp/exp.js'
 
-
 const projects = new Exp()
+
 
 async function projectsIndex () {
     const ul = document.querySelector('.experiencia-lista')
     const url = 'http://localhost:3000/api/v1/projects'
     
     try {
-        const data = await projects.getData(url)
+        let data = await getData(url)
+        data = data.data
     data.forEach(item => {
         const project = document.createElement('li')
         project.innerHTML = projects.project(item)
