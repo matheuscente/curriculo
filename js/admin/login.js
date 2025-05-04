@@ -1,7 +1,4 @@
-import exp from "../exp/exp.js";
-import { unauthorized } from "./fns.js";
-
-const requisitions = new exp();
+import { isAuth } from "./fns.js";
 
 const url = "http://localhost:3000/api/v1/login";
 
@@ -17,21 +14,18 @@ form.addEventListener("submit", async (event) => {
       password: formData.get("password"),
     };
     let data = await axios.post(url, loginData);
-    
+
     if (data.status === 200 || response.status === 201) {
-      data = data.data.data
+      data = data.data.data;
       sessionStorage.setItem("token", data.token);
       sessionStorage.setItem("refreshToken", data.refreshToken);
-      await unauthorized()
-      window.location.href = '/admin/admin.html'
 
-        
-
-          }
+      window.location.href = "/admin/admin.html";
+    }
   } catch (err) {
     event.preventDefault();
-    if(err.status === 401) {
-      await unauthorized()
+    if (err.status === 401) {
+      window.location.href = "/unauthorized";
     }
   }
 });

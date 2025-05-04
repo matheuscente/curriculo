@@ -1,5 +1,5 @@
 import { listTechs } from "../admin/fns.js";
-export {getData} from '../admin/getData.js'
+export {getData} from '../admin/api/api.js'
 
 export default class Exp {
 

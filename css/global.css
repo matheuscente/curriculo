@@ -53,6 +53,7 @@ ul, h1, h2, p, li {
     gap: 1rem;
     flex-wrap: wrap;
     justify-items: center;
+    margin: 0 auto
   }
 
   .item-options {

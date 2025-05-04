@@ -1,4 +1,4 @@
-import { getData } from "../admin/getData.js";
+import { getData } from "../admin/api/api.js";
 
 //recebe as tecnologias e retorna uma lista de LIs
 export function listTechs(techs) {
@@ -123,17 +123,17 @@ async function modalTemplate(template) {
 }
 
 //faz umaa requisição com o token salvo, caso não autorizado, direciona pra pag unauthorized
-export async function unauthorized() {
+export async function isAuth() {
   try {
     const token = sessionStorage.getItem("token");
 
     const response = await getData("http://localhost:3000/api/v1/users/info");
     if (response.status === 200 || response.status === 201) {
-      return;
+      return true;
     }
   } catch (err) {
     if (err.status === 401) {
-      window.location.href = "/unauthorized";
+        return false
     }
   }
 }
@@ -369,6 +369,7 @@ export async function attItems(url, template) {
     }
   } catch (err) {
     if (err.status === 400 && projectSession) {
+      console.log(projectSession)
       const li = document.createElement("li");
       li.innerText = `Você não tem ${errCase} cadastrado(a)`;
       projectSession.appendChild(li);

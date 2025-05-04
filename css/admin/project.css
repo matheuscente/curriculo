@@ -11,7 +11,6 @@ html, body {
 
 .project-bg {
     background-color: var(--c2);
-    max-width: 520px;
 }
 
 .exp-lista-item.padding-bottom-none.margin-bottom-none {
@@ -20,21 +19,28 @@ html, body {
 }
 
 .items-list {
-    overflow-y: scroll;
-    max-width: 1300px;
-    max-height: 400px;
+    overflow-x: auto;
+    max-width: 90vw;
     display: flex;
+    flex: 1;
     justify-content: center;
     gap: 30px;
-    flex-wrap: wrap;
-    padding: 10px;
+    padding: 50px;
     border-top: none;
     border-radius: 4px;
-    box-shadow: .01px .01px 5px .01px black;
 }
 
+
+
 section {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
+    padding: 2rem;
+    max-height: 300px;
+}
+
+#projects-section {
+    max-height: 500px;
 }
 
 .exp-lista-admin {
@@ -65,6 +71,8 @@ section {
 }
 
 .button-item-options {
+    font-family: inherit;
+    font-size: inherit;
     border-radius: 5px;
     background-color: #ccc;
     padding: .5rem 1rem;
