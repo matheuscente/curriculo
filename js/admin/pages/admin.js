@@ -12,7 +12,6 @@ const body = document.querySelector("#body")
     await header()
     await attItems("http://localhost:3000/api/v1/projects", "projects");
     await attItems("http://localhost:3000/api/v1/areas", "areas");
-
     await attItems("http://localhost:3000/api/v1/technologies", "technologies");
 
 
