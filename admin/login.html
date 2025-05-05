@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preload" href="../css/style.css" as="style" />
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script type='module' src="../js/admin/pages/login.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+  <title>Login</title>
+
+</head>
+<body class="login-item-body">
+  <div class="login-item-container">
+    <h2 class="login-item-title">Login</h2>
+    <form id="login-form" method="POST" >
+      <div class="login-item-form-group">
+        <label for="username" class="login-item-label">Usuário</label>
+        <input type="text" id="username" name="username" class="login-item-input" required />
+      </div>
+      <div class="login-item-form-group">
+        <label for="password" class="login-item-label">Senha</label>
+        <input type="password" id="password" name="password" class="login-item-input" required />
+      </div>
+      <button type="submit" class="login-item-button">Entrar</button>
+    </form>
+    <div class="login-item-footer">
+      © 2025 Vicente Matheus dos S. Souza
+    </div>
+  </div>
+</body>
+</html>

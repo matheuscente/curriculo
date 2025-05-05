@@ -1,0 +1,27 @@
+import {attItems} from '../fns/fns.js'
+import Auth from '../auth/auth.js'
+import Projects from "../templates/projects.js"
+
+const auth = new Auth()
+const projects = new Projects()
+
+const isAuthenticated = await auth.isAuth()
+
+if(isAuthenticated) {
+
+const body = document.querySelector("#body")
+
+    body.innerHTML = projects.projectsTemplate()
+    await projects.header()
+    await attItems("http://localhost:3000/api/v1/projects", "projects");
+
+    body.addEventListener("click", async (event) => {
+        await projects.makeAction(event)
+    })
+    
+
+
+} else {
+    window.location.href = '/unauthorized'
+}
+

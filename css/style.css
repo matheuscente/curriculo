@@ -1,0 +1,19 @@
+@import "variaveis.css";
+@import "global.css";
+@import "./index/header.css";
+@import "./index/apresentacao.css";
+@import "./index/experiencia.css";
+@import "./index/formacao.css";
+@import "./index/footer.css";
+@import "./admin/header.css";
+@import "./admin/project.css";
+@import "./admin/footer.css";
+@import "./admin/deleteProjectModal.css";
+@import "./admin/login.css";
+@import "./admin//modal.css"
+
+
+
+
+
+
