@@ -1,16 +1,24 @@
-import {technologiesTemplate} from '../templates/technologies.js'
-import {isAuth, attItems} from '../fns.js'
-import { header } from '../header.js'
+import TechnologiesTemplate from '../templates/technologies.js'
+import {attItems} from '../fns/fns.js'
+import Auth from '../auth/auth.js'
 
-const isAuthenticated = await isAuth()
+const auth = new Auth()
+const template = new TechnologiesTemplate()
+
+const isAuthenticated = await auth.isAuth()
 
 if(isAuthenticated) {
 
 const body = document.querySelector("#body")
 
-    body.innerHTML = technologiesTemplate()
-    await header()
+    body.innerHTML = template.technologiesTemplate()
+    await template.header()
     await attItems("http://localhost:3000/api/v1/technologies", "technologies");
+    
+    body.addEventListener("click", async (event) => {
+        await template.makeAction(event)
+    })
+    
 
 
 } else {

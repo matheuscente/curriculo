@@ -1,5 +1,7 @@
-import { listTechs } from "../admin/fns.js";
+import Technologies from "../admin/templates/technologies.js";
 export {getData} from '../admin/api/api.js'
+
+const technologies = new Technologies()
 
 export default class Exp {
 
@@ -69,7 +71,11 @@ export default class Exp {
             <p class="exp-p">${item.description}</p>
             <h2 class="titulo2">Desenvolvedor ${item.area.title}</h2>
             <ul class="lista-habilidades">
+<<<<<<< HEAD
                 ${(listTechs(item.technologies)).join("")}
+=======
+                ${(technologies.listTechs(item.technologies)).join("")}
+>>>>>>> origin/refactor/js
             </ul>
         </a>`;
   }

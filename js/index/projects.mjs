@@ -9,7 +9,11 @@ async function projectsIndex () {
     const url = 'http://localhost:3000/api/v1/projects'
     
     try {
-        let data = await getData(url)
+        let data = await getData(url, {
+            headers: {
+                Authorization: sessionStorage.getItem('token')
+            }
+        })
         data = data.data
     data.forEach(item => {
         const project = document.createElement('li')

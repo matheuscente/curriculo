@@ -1,16 +1,24 @@
-import {projectsTemplate} from '../templates/projects.js'
-import {isAuth, attItems} from '../fns.js'
-import { header } from '../header.js'
+import {attItems} from '../fns/fns.js'
+import Auth from '../auth/auth.js'
+import Projects from "../templates/projects.js"
 
-const isAuthenticated = await isAuth()
+const auth = new Auth()
+const projects = new Projects()
+
+const isAuthenticated = await auth.isAuth()
 
 if(isAuthenticated) {
 
 const body = document.querySelector("#body")
 
-    body.innerHTML = projectsTemplate()
-    await header()
+    body.innerHTML = projects.projectsTemplate()
+    await projects.header()
     await attItems("http://localhost:3000/api/v1/projects", "projects");
+
+    body.addEventListener("click", async (event) => {
+        await projects.makeAction(event)
+    })
+    
 
 
 } else {

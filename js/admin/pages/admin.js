@@ -1,23 +1,30 @@
-import {adminTemplate} from '../templates/admin.js'
-import {isAuth, attItems} from '../fns.js'
-import { header } from '../header.js'
+import { attItems, makeAction } from "../fns/fns.js";
+import Auth from "../auth/auth.js";
+import Admin from "../templates/admin.js";
 
-const isAuthenticated = await isAuth()
-
-if(isAuthenticated) {
-
-const body = document.querySelector("#body")
-
-    body.innerHTML = adminTemplate()
-    await header()
-    await attItems("http://localhost:3000/api/v1/projects", "projects");
-    await attItems("http://localhost:3000/api/v1/areas", "areas");
-    await attItems("http://localhost:3000/api/v1/technologies", "technologies");
+try{const auth = new Auth();
+const admin = new Admin();
 
 
 
+const isAuthenticated = await auth.isAuth();
 
+if (isAuthenticated) {
+  const body = document.querySelector("#body");
+
+  body.innerHTML = admin.adminTemplate();
+  await admin.header();
+  await attItems("http://localhost:3000/api/v1/projects", "projects");
+  await attItems("http://localhost:3000/api/v1/areas", "areas");
+  await attItems("http://localhost:3000/api/v1/technologies", "technologies");
+
+
+    body.addEventListener("click", async (event) => {
+     await makeAction(event)
+    });
 } else {
-    window.location.href = '/unauthorized'
+  window.location.href = "/unauthorized";
+} 
+} catch(err) {
+    console.log(err)
 }
-
