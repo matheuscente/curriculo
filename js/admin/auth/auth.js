@@ -72,16 +72,13 @@ export default class Auth {
   //faz o logout e limpa o storage
   async logout() {
     try {
-      const refreshToken = sessionStorage.getItem("refreshToken");
 
       await api.postData(
         "http://localhost:3000/api/v1/session/logout",
+        
         {
-          refreshToken,
-        },
-        {
+          withCredentials: true,
           headers: {
-            Authorization: sessionStorage.getItem("token"),
              'X-CSRF-Token': getCookie('XSRF-TOKEN')
           },
         }
