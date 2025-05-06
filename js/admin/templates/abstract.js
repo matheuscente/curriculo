@@ -27,6 +27,7 @@ export default class AbstractTemplate {
   async header() { 
     try{
       const options = {
+        withCredentials: true,
         headers: {
           Authorization: sessionStorage.getItem('token')
         }

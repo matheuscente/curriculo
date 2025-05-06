@@ -1,4 +1,5 @@
 import Api from "../api/api.js";
+import { getCookie } from "../fns/fns.js";
 
 const api = new Api();
 
@@ -19,6 +20,8 @@ export default class Auth {
           userName: formData.get("username"),
           password: formData.get("password"),
         };
+
+
         let data = await api.postData(url, loginData);
 
         if (data.status === 200 || response.status === 201) {
@@ -47,6 +50,7 @@ export default class Auth {
         return false;
       }
       const options = {
+        withCredentials: true,
         headers: {
           Authorization: token,
         },
@@ -78,6 +82,7 @@ export default class Auth {
         {
           headers: {
             Authorization: sessionStorage.getItem("token"),
+             'X-CSRF-Token': getCookie('XSRF-TOKEN')
           },
         }
       );
@@ -87,7 +92,7 @@ export default class Auth {
 
       window.location.href = "/admin/login.html";
     } catch (err) {
-      console.log("erro ao fazer logout");
+      console.log("erro ao fazer logout", err);
     }
   }
 }

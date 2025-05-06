@@ -59,6 +59,7 @@
   
       try {
         const options = {
+          withCredentials: true,
           headers: {
             Authorization: sessionStorage.getItem("token"),
           },
@@ -112,8 +113,9 @@
           await api.deleteData(
             `http://localhost:3000/api/v1/${event.target.id}/${event.target.value}`,
             {
+              withCredentials: true,
               headers: {
-                Authorization: sessionStorage.getItem("token"),
+                 'X-CSRF-Token': getCookie('XSRF-TOKEN')
               },
             }
           );
@@ -125,4 +127,12 @@
     } else if (event.target.classList.contains("modal-project-close-btn")) {
       modal.closeModal();
     }
+  }
+
+
+
+  export function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
   }

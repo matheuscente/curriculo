@@ -23,7 +23,7 @@ if (isAuthenticated) {
      await makeAction(event)
     });
 } else {
-  window.location.href = "/unauthorized";
+  window.location.href = "/unauthorized"
 } 
 } catch(err) {
     console.log(err)

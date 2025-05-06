@@ -1,4 +1,5 @@
 import Api from "../api/api.js"
+import { getCookie } from "../fns/fns.js";
 
 const api = new Api()
 
@@ -129,8 +130,9 @@ export default class Modal {
             `http://localhost:3000/api/v1/${target.id}/${target.value}`,
             data,
             {
+              withCredentials: true,
               headers: {
-                Authorization: sessionStorage.getItem("token"),
+                'X-CSRF-Token': getCookie('XSRF-TOKEN')
               },
             }
           );
@@ -158,8 +160,9 @@ export default class Modal {
                 `http://localhost:3000/api/v1/${target.id}/${target.value}`,
                 update,
                 {
+                  withCredentials: true,
                   headers: {
-                    Authorization: sessionStorage.getItem("token"),
+                     'X-CSRF-Token': getCookie('XSRF-TOKEN')
                   },
                 }
               );

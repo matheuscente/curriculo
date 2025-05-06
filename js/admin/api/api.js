@@ -4,36 +4,19 @@ export default class Api {
     return data;
   }
 
-  async postData(url, data) {
-    const token = sessionStorage.getItem("token");
+  async postData(url, data, options) {
 
-    const returnData = await axios.post(url, data, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const returnData = await axios.post(url, data, options);
     return returnData;
   }
 
   async patchData(url, data) {
-    const token = sessionStorage.getItem("token");
-
-    const returnData = await axios.patch(url, data, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const returnData = await axios.patch(url, data, options);
     return returnData;
   }
 
   async deleteData(url) {
-    const token = sessionStorage.getItem("token");
-
-    const returnData = await axios.delete(url, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const returnData = await axios.delete(url, options);
     return returnData;
   }
 }
