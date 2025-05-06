@@ -1,4 +1,4 @@
-import {attItems} from '../fns/fns.js'
+import {attItems, makeAction} from '../fns/fns.js'
 import Auth from '../auth/auth.js'
 import Projects from "../templates/projects.js"
 
@@ -12,11 +12,11 @@ if(isAuthenticated) {
 const body = document.querySelector("#body")
 
     body.innerHTML = projects.projectsTemplate()
-    await projects.header()
+    await projects.header(auth)
     await attItems("http://localhost:3000/api/v1/projects", "projects");
 
     body.addEventListener("click", async (event) => {
-        await projects.makeAction(event)
+        await makeAction(event)
     })
     
 

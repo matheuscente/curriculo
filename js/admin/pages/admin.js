@@ -13,7 +13,7 @@ if (isAuthenticated) {
   const body = document.querySelector("#body");
 
   body.innerHTML = admin.adminTemplate();
-  await admin.header();
+  await admin.header(auth);
   await attItems("http://localhost:3000/api/v1/projects", "projects");
   await attItems("http://localhost:3000/api/v1/areas", "areas");
   await attItems("http://localhost:3000/api/v1/technologies", "technologies");

@@ -60,18 +60,23 @@ export default class Technologies extends AbstractTemplate {
       
       const options = {
         withCredentials: true,
-        headers: {
-          Authorization: sessionStorage.getItem("token"),
-        },
+
       }
       let techs = await api.getData("http://localhost:3000/api/v1/technologies", options);
       techs = techs.data;
-  
-      return techs.map((item) => {
-        return ` <label>
-        <input type="checkbox" name="tecnologias" value="${item.id}" class="modal-project-checkbox"> ${item.title}
-      </label>`;
-      });
+
+      if(techs.length === 0) {
+        return [
+          ` <span>Não há tecnologias cadastradas, favor cadastrar uma tecnologia.</span>`,
+        ];
+      } else {
+        return techs.map((item) => {
+          return ` <label>
+          <input type="checkbox" name="tecnologias" value="${item.id}" class="modal-project-checkbox"> ${item.title}
+        </label>`;
+        });
+      }
+      
     } catch (err) {
       console.log(err);
       if (err.status === 400) {

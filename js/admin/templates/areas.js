@@ -47,30 +47,32 @@ export default class Areas extends AbstractTemplate{
     //busca as areas no BD e retorna um array de option com cada area
     //se vazio, retorna um option informando que não há areas
      async getAreas() {
-      const data = [
-        '<option value="false" disabled selected>Selecione uma opção</option>',
-      ];
       try {
         const options = {
           withCredentials: true,
-          headers: {
-            Authorization: sessionStorage.getItem('token'),
-          },
+
         }
         let areas = await api.getData("http://localhost:3000/api/v1/areas", options);
         areas = areas.data;
-    
-        data.push(
-          areas.map((item) => {
-            return `<option value="${item.id}">${item.title}</option>`;
-          })
-        );
-        return data;
-      } catch (err) {
 
-        if (err.status === 400) {
+        if(areas.length === 0 ) {
           return `<option disabled>Não há areas cadastradas, favor cadastrar uma area</option>`;
+        } else {
+          const data = [
+            '<option value="false" disabled selected>Selecione uma opção</option>',
+          ];
+          data.push(
+            areas.map((item) => {
+              return `<option value="${item.id}">${item.title}</option>`;
+            })
+          );
+          return data;
         }
+       
+      } catch (err) {
+        console.log(err)
+          return `<option disabled>Não há areas cadastradas, favor cadastrar uma area</option>`;
+
       }
     }
 

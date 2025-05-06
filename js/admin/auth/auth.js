@@ -1,7 +1,9 @@
 import Api from "../api/api.js";
 import { getCookie } from "../fns/fns.js";
+import Errors from "../errors/errors.js";
 
 const api = new Api();
+const formatErrors = new Errors()
 
 export default class Auth {
 
@@ -22,21 +24,26 @@ export default class Auth {
         };
 
 
-        let data = await api.postData(url, loginData);
+        let data = await api.postData(url, loginData, {
+          withCredentials: true
+        });
 
-        if (data.status === 200 || response.status === 201) {
-          data = data.data.data;
-          sessionStorage.setItem("token", data.token);
-          sessionStorage.setItem("refreshToken", data.refreshToken);
+        if (data.status === 200 || data.status === 201) {
+          
+          await api.getData('http://localhost:3000/api/v1/session/csrfToken', {
+            withCredentials: true
+          }) 
 
           window.location.href = "/admin/admin.html";
         }
       } catch (err) {
-        console.log(err)
         event.preventDefault();
-        if (err.status === 401) {
-          window.location.href = "/unauthorized";
-        }
+
+        const errors = err.response.data.errors
+        const listedErrors = formatErrors.listErrors(errors)
+        listedErrors.forEach(error => {
+          window.alert(error)
+        });
       }
     });
   }
@@ -44,16 +51,9 @@ export default class Auth {
   //faz uma requisição com o token salvo, caso não autorizado, direciona pra pag unauthorized
   async isAuth() {
     try {
-      const token = sessionStorage.getItem("token");
 
-      if (!token) {
-        return false;
-      }
       const options = {
-        withCredentials: true,
-        headers: {
-          Authorization: token,
-        },
+        withCredentials: true
       };
       const response = await api.getData(
         "http://localhost:3000/api/v1/users/info",
@@ -64,29 +64,26 @@ export default class Auth {
       }
     } catch (err) {
       if (err.status === 401) {
+        window.location.href = 'unauthorized'
         return false;
       }
     }
   }
 
-  //faz o logout e limpa o storage
+  //faz o logout
   async logout() {
     try {
-
+      const cookie = getCookie('XSRF-TOKEN')
+      console.log(cookie)
       await api.postData(
         "http://localhost:3000/api/v1/session/logout",
-        
-        {
+        null,{
           withCredentials: true,
           headers: {
              'X-CSRF-Token': getCookie('XSRF-TOKEN')
           },
         }
       );
-
-      sessionStorage.removeItem("token");
-      sessionStorage.removeItem("refreshToken");
-
       window.location.href = "/admin/login.html";
     } catch (err) {
       console.log("erro ao fazer logout", err);

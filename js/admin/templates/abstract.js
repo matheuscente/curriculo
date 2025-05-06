@@ -1,13 +1,13 @@
 
 import Api from "../api/api.js"
-import Auth from '../auth/auth.js'
+
 
 const api = new Api()
-const auth = new Auth()
 
 export default class AbstractTemplate {
   constructor(modal) {
     this.modal = modal
+
   }
 
   //template de area e tech
@@ -24,13 +24,11 @@ export default class AbstractTemplate {
                         </div>`;
   }
 
-  async header() { 
+  async header(auth) { 
     try{
       const options = {
         withCredentials: true,
-        headers: {
-          Authorization: sessionStorage.getItem('token')
-        }
+  
       }
       const info = await api.getData("http://localhost:3000/api/v1/users/info", options);
       const DOMrole = document.querySelector("#user-type");

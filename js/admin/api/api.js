@@ -10,12 +10,12 @@ export default class Api {
     return returnData;
   }
 
-  async patchData(url, data) {
+  async patchData(url, data, options) {
     const returnData = await axios.patch(url, data, options);
     return returnData;
   }
 
-  async deleteData(url) {
+  async deleteData(url, options) {
     const returnData = await axios.delete(url, options);
     return returnData;
   }
