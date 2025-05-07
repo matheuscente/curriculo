@@ -38,7 +38,6 @@ export default class Auth {
         }
       } catch (err) {
         event.preventDefault();
-
         const errors = err.response.data.errors
         const listedErrors = formatErrors.listErrors(errors)
         listedErrors.forEach(error => {
