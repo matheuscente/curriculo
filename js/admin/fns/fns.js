@@ -106,10 +106,10 @@ export async function attItems(url, template) {
 
 export async function makeAction(event) {
   if (event.target.classList.contains("post")) {
-    await modal.openModal(event.target);
+    await modal.openModal(event.target, "post");
     await modal.sendModalData(event.target, "post");
   } else if (event.target.classList.contains("patch")) {
-    await modal.openModal(event.target);
+    await modal.openModal(event.target, "patch");
     await modal.sendModalData(event.target, "patch");
   } else if (event.target.classList.contains("delete")) {
     modal.showDeleteConfirmationModal(async () => {
@@ -128,10 +128,7 @@ export async function makeAction(event) {
         window.location.reload();
       } catch (err) {
         const errors = err.response.data.errors
-        const listedErrors = returnError.listErrors(errors)
-        listedErrors.forEach(error => {
-          window.alert(error)
-        });
+        returnError.returnErrors(errors)
       }
     });
   } else if (event.target.classList.contains("modal-project-close-btn")) {

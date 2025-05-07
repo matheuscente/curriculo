@@ -1,7 +1,10 @@
 import Api from "../api/api.js"
 import { getCookie } from "../fns/fns.js";
+import Errors
+ from "../errors/errors.js";
 
 const api = new Api()
+const formatErrors = new Errors()
 
 export default class Modal {
   constructor({getAreas, getTechs}) {
@@ -15,7 +18,7 @@ export default class Modal {
   }
   
   //template dos formularios de edição
-  async modalTemplate(template) {
+  async modalTemplate(template, action) {
     if (template === "projects") {
       return ` <div class="modal-project-overlay" id="modalProjectOverlay">
       <div class="modal-project-container">
@@ -23,16 +26,16 @@ export default class Modal {
   
         <form class="formulario" method="POST">
           <label for="titulo" class="modal-project-label">Título</label>
-          <input type="text" id="titulo" name="titulo" class="modal-project-input">
+          <input type="text" id="titulo" name="titulo" class="modal-project-input" ${action === "post" && 'required'}>
     
           <label for="descricao" class="modal-project-label">Descrição</label>
-          <textarea id="descricao" name="descricao" rows="4" class="modal-project-textarea"></textarea>
+          <textarea id="descricao" name="descricao" rows="4" class="modal-project-textarea" ${action === "post" && 'required'}></textarea>
     
           <label for="ano" class="modal-project-label">Ano</label>
-          <input type="text" id="ano" name="ano" class="modal-project-input">
+          <input type="number" id="ano" name="ano" class="modal-project-input" ${action === "post" && 'required'}>
   
           <label for="url" class="modal-project-label">link do projeto</label>
-          <input type="text" id="url" name="url" class="modal-project-input">
+          <input type="text" id="url" name="url" class="modal-project-input" ${action === "post" && 'required'}>
     
     
     
@@ -41,13 +44,12 @@ export default class Modal {
       ${(await this.getTechs()).join("")}
     
           <label for="area" class="modal-project-label">Área</label>
-          <select id="area" name="area" class="modal-project-select">
+          <select id="area" name="area" class="modal-project-select" ${action === "post" && 'required'}>
             ${await this.getAreas()}
           </select>
     
           <label for="progresso" class="modal-project-label">Em progresso?</label>
-          <select id="progresso" name="progresso" class="modal-project-select">
-          <option value="true" selected disabled>Selecione uma opção</option>
+          <select id="progresso" name="progresso" class="modal-project-select" ${action === "post" && 'required'}>
             <option value="true">Sim</option>
             <option value="false">Não</option>
           </select>
@@ -63,7 +65,7 @@ export default class Modal {
   
         <form class="formulario" method="POST">
           <label for="titulo" class="modal-project-label">Título</label>
-          <input type="text" id="titulo" name="titulo" class="modal-project-input">
+          <input type="text" id="titulo" name="titulo" class="modal-project-input" ${action === "post" && 'required'}>
     
           <label for="descricao" class="modal-project-label">Descrição</label>
           <textarea id="descricao" name="descricao" rows="4" class="modal-project-textarea"></textarea>
@@ -77,11 +79,11 @@ export default class Modal {
 
   
 //abre o modal
- async openModal(target) {
+ async openModal(target, action) {
     const main = document.querySelector(".content");
     const modal = document.createElement("div");
     modal.classList.add("modal");
-    modal.innerHTML = await this.modalTemplate(target.id);
+    modal.innerHTML = await this.modalTemplate(target.id, action);
   
     main.appendChild(modal);
   }
@@ -92,7 +94,6 @@ export default class Modal {
     const form = modal.querySelector("form");
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      this.closeModal();
   
       const formData = new FormData(form);
   
@@ -102,77 +103,86 @@ export default class Modal {
       const tecnologiasSelecionadas = Array.from(checkboxes).map((cb) => {
         return Number.parseInt(cb.value);
       });
-  
-      if (action === "post") {
-        let data;
-        if (target.id === "projects") {
-          data = {
+      
+      try {
+        if (action === "post") {
+          let data;
+          if (target.id === "projects") {
+            data = {
+              title: formData.get("titulo"),
+              description: formData.get("descricao"),
+              year: formData.get("ano"),
+              technologies: tecnologiasSelecionadas,
+              area: formData.get("area"),
+              url: formData.get("url"),
+              inProgress: formData.get("progresso") === "true",
+            };
+          } else if (target.id === "areas" || target.id === "technologies") {
+            data = {
+              title: formData.get("titulo"),
+              description: formData.get("descricao"),
+            };
+    
+            if (!data.description) {
+              delete data.description;
+            }
+          }
+      
+            await api.postData(
+              `http://localhost:3000/api/v1/${target.id}/${target.value}`,
+              data,
+              {
+                withCredentials: true,
+                headers: {
+                  'X-CSRF-Token': getCookie('XSRF-TOKEN')
+                },
+              }
+            );
+            window.location.reload();
+          
+          
+        } else if (action === "patch") {
+          const data = {
             title: formData.get("titulo"),
             description: formData.get("descricao"),
             year: formData.get("ano"),
-            technologies: tecnologiasSelecionadas,
+            technologies: tecnologiasSelecionadas.length >= 1 ? tecnologiasSelecionadas : false,
             area: formData.get("area"),
-            url: formData.get("url"),
-            inProgress: formData.get("progresso") === "true",
+            inProgress: formData.get("progresso"),
           };
-        } else if (target.id === "areas" || target.id === "technologies") {
-          data = {
-            title: formData.get("titulo"),
-            description: formData.get("descricao"),
-          };
-  
-          if (!data.description) {
-            delete data.description;
-          }
-        }
-        try {
-          await api.postData(
-            `http://localhost:3000/api/v1/${target.id}/${target.value}`,
-            data,
-            {
-              withCredentials: true,
-              headers: {
-                'X-CSRF-Token': getCookie('XSRF-TOKEN')
-              },
+      
+            for (let field in data) {
+              if (data[field]) {
+                console.log(data[field])
+                const update = {
+                  field: field,
+                  value: data[field],
+                };
+             
+                  await api.patchData(
+                    `http://localhost:3000/api/v1/${target.id}/${target.value}`,
+                    update,
+                    {
+                      withCredentials: true,
+                      headers: {
+                         'X-CSRF-Token': getCookie('XSRF-TOKEN')
+                      },
+                    }
+                  );
+              }
             }
-          );
-          window.location.reload();
-        } catch (err) {
-          console.log(err);
+            window.location.reload()
+          
         }
-      } else if (action === "patch") {
-        const data = {
-          title: formData.get("titulo"),
-          description: formData.get("descricao"),
-          year: formData.get("ano"),
-          technologies: tecnologiasSelecionadas,
-          area: formData.get("area"),
-          inProgress: formData.get("progresso"),
-        };
-        for (let field in data) {
-          if (data[field]) {
-            const update = {
-              field: field,
-              value: data[field],
-            };
-            try {
-              await api.patchData(
-                `http://localhost:3000/api/v1/${target.id}/${target.value}`,
-                update,
-                {
-                  withCredentials: true,
-                  headers: {
-                     'X-CSRF-Token': getCookie('XSRF-TOKEN')
-                  },
-                }
-              );
-            } catch (err) {
-              console.log(err);
-            }
-          }
-        }
-        window.location.reload();
+
+        this.closeModal()
       }
+      catch(err) {
+        event.preventDefault()
+        const errors = err.response.data.errors
+        formatErrors.returnErrors(errors)
+      }
+      
     });
   }
 

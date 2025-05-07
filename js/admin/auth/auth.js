@@ -39,10 +39,7 @@ export default class Auth {
       } catch (err) {
         event.preventDefault();
         const errors = err.response.data.errors
-        const listedErrors = formatErrors.listErrors(errors)
-        listedErrors.forEach(error => {
-          window.alert(error)
-        });
+        formatErrors.returnErrors(errors)
       }
     });
   }
@@ -85,7 +82,8 @@ export default class Auth {
       );
       window.location.href = "/admin/login.html";
     } catch (err) {
-      console.log("erro ao fazer logout", err);
+      const errors = err.response.data.errors
+      formatErrors.returnErrors(errors)
     }
   }
 }
