@@ -6,7 +6,7 @@ export default class Exp {
   }
 
   async projectsIndex () {
-    console.log(this.api)
+    (this.api)
     const ul = document.querySelector('.experiencia-lista')
     const url = 'http://localhost:3000/api/v1/projects'
     
@@ -19,7 +19,7 @@ export default class Exp {
         ul.appendChild(project)
     });
     } catch (err) {
-        console.log(err)
+        (err)
     }
 
 } 
@@ -27,7 +27,7 @@ export default class Exp {
 
   project(item) {
      let title;
-    console.log(item.inProgress)
+    (item.inProgress)
      item.inProgress ? title =  `<h2 class="titulo1">${item.title} <span>em andamento</span></h2>` : title = `<h2 class="titulo1">${item.title} <span>finalizado</span></h2>`
 
     return ` 

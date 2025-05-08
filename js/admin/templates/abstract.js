@@ -13,7 +13,7 @@ export default class AbstractTemplate {
   //template de area e tech
   techAndArea(item, template) {
     return `<h2 class="titulo1">${item.title}</h2>
-                        <p class="exp-p">${item.description || ""}</p>
+                        ${item.description ? `<p class="exp-p">${item.description || ""}</p>` : ""}
                         <div class="item-options">
                             <button id="${template}" value="${
       item.id
@@ -48,7 +48,7 @@ export default class AbstractTemplate {
   
       logoutButton.addEventListener("click", auth.logout);
     } catch (err) {
-      console.log(err)
+      (err)
     }
    
   }

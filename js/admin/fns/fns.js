@@ -100,12 +100,14 @@ export async function attItems(url, template) {
       }
     }
   } catch (err) {
-    console.log(err);
+    (err);
   }
 }
 
-export async function makeAction(event) {
-  if (event.target.classList.contains("post")) {
+export async function makeAction(event, auth) {
+  if(event.target.classList.contains("header-button")) {
+    await auth.logout()
+  } else if (event.target.classList.contains("post")) {
     await modal.openModal(event.target, "post");
     await modal.sendModalData(event.target, "post");
   } else if (event.target.classList.contains("patch")) {
@@ -115,7 +117,6 @@ export async function makeAction(event) {
     modal.showDeleteConfirmationModal(async () => {
       try {
         const cookie = getCookie("XSRF-TOKEN");
-        console.log(cookie);
         await api.deleteData(
           `http://localhost:3000/api/v1/${event.target.id}/${event.target.value}`,
           {

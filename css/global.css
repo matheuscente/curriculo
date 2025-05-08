@@ -64,6 +64,12 @@ ul, h1, h2, p, li {
     padding: .5rem;
   }
 
+  .content-section {
+    max-height: fit-content;
+  }
+
+  
+
   @media (max-width: 900px) {
     #btn-mobile {
         display:flex;
@@ -78,7 +84,15 @@ ul, h1, h2, p, li {
         display: block;
         width: 25px;
         border-top: 4px solid;
-  
+     }
+
+     #hamburguer.admin {
+      border-top: 4px solid var(--c1);
+     }
+
+     #hamburguer.admin::after,
+     #hamburguer.admin::before{
+      background-color: var(--c1);
      }
   
      #hamburguer::after,
@@ -94,7 +108,9 @@ ul, h1, h2, p, li {
         background-color: currentColor;
      }
   }
- 
+
+  
+
 
   @media (max-width: 500px) {
     #btn-mobile {

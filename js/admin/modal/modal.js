@@ -153,7 +153,6 @@ export default class Modal {
       
             for (let field in data) {
               if (data[field]) {
-                console.log(data[field])
                 const update = {
                   field: field,
                   value: data[field],

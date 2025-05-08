@@ -38,8 +38,7 @@ export default class Auth {
         }
       } catch (err) {
         event.preventDefault();
-        const errors = err.response.data.errors
-        formatErrors.returnErrors(errors)
+        console.log(err)
       }
     });
   }
@@ -69,8 +68,6 @@ export default class Auth {
   //faz o logout
   async logout() {
     try {
-      const cookie = getCookie('XSRF-TOKEN')
-      console.log(cookie)
       await api.postData(
         "http://localhost:3000/api/v1/session/logout",
         null,{

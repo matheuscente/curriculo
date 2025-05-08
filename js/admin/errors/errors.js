@@ -54,9 +54,9 @@ const errors = {
 
     "uniqueViolation": {
         "please send a new userName for users": "por favor, informe outro username",
-         "please send a new title for technologies": "por favor, informe um novo nome para a tecnologia",
-         "please send a new title for areas": "por favor, informe um novo nome para a area",
-         "please send a new title for projects": "por favor, informe um novo nome para o projeto"
+         "please send a new title for technologies": "por favor, informe um outro nome para a tecnologia",
+         "please send a new title for areas": "por favor, informe um outro nome para a area",
+         "please send a new title for projects": "por favor, informe um outro nome para o projeto"
 
     },
 
@@ -98,11 +98,6 @@ const errors = {
          "description must be a string": "a descrição deve ser uma texto",
          "inProgress must be a boolean": "O progresso deve ser 'sim' ou 'não'",
          "technologies must be an array": "tecnologias deve ser uma lista de tecnologias",
-         
-
-
-
-
         "year must be a number": "informe um ano válido",
         "technologies must contain at least 1 items": "informe pelo menos uma tecnologia",
         "area must be a number": "informe uma area válida"
@@ -112,9 +107,7 @@ const errors = {
 export default class Errors {
     compareError(returnedError) {
         for(const error in errors) {
-            
             if(returnedError.name === error) {
-                console.log(error)
                     for(const errMsg in errors[error]) {
                         if(returnedError.error.includes(errMsg)) {
                             return errors[error][errMsg]

@@ -78,6 +78,11 @@ body {
   cursor: pointer;
 }
 
+.modal-project-submit-btn:hover {
+  background-color: #0e131a;
+}
+
+
 .modal-project-close-btn {
   position: absolute;
   top: 1rem;

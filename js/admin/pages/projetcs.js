@@ -16,7 +16,7 @@ const body = document.querySelector("#body")
     await attItems("http://localhost:3000/api/v1/projects", "projects");
 
     body.addEventListener("click", async (event) => {
-        await makeAction(event)
+        await makeAction(event, auth)
     })
     
 
