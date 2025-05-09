@@ -1,14 +1,15 @@
-import TechnologiesTemplate from '../templates/technologies.js'
 import {attItems, makeAction} from '../fns/fns.js'
 import Auth from '../auth/auth.js'
+import Projects from "../templates/projects.js"
 import Errors from '../errors/errors.js'
 import { toggleMenu } from "../../toggleMenu.js";
+
 
 
 const errorHandler = new Errors()
 
 try{const auth = new Auth();
-const technologies = new TechnologiesTemplate();
+const projects = new Projects();
 
 
 const isAuthenticated = await auth.isAuth();
@@ -18,33 +19,33 @@ const isAuthenticated = await auth.isAuth();
 
 if (isAuthenticated) {
 
-  body.innerHTML = technologies.technologiesTemplate();
-  await technologies.header(auth);
-  await attItems("http://localhost:3000/api/v1/technologies", "technologies");
+  body.innerHTML = projects.projectsTemplate();
+  await projects.header(auth);
+  await attItems("http://localhost:3000/api/v1/projects", "projects");
 
-  const technologiesList = body.querySelector('.items-list')
+  const projectsList = body.querySelector('.items-list')
 
       if(window.innerWidth <= 900) {
   
-    if(technologiesList.childNodes.length >= 4) {
-      console.log(technologiesList.childNodes)
+    if(projectsList.childNodes.length >= 4) {
+      console.log(projectsList.childNodes)
   
-      technologiesList.style.justifyContent = 'left'
+      projectsList.style.justifyContent = 'left'
     }
   
   } else {
-      technologiesList.style.justifyContent = 'center'
+      projectsList.style.justifyContent = 'center'
 
   }
 
   window.addEventListener('resize', () => {
     if(window.innerWidth <= 900) {
   
-    if(technologiesList.childNodes.length >= 4) {
-      technologiesList.style.justifyContent = 'left'
+    if(projectsList.childNodes.length >= 4) {
+      projectsList.style.justifyContent = 'left'
     }
   } else {
-      technologiesList.style.justifyContent = 'center'
+      projectsList.style.justifyContent = 'center'
   }
 
   })
@@ -67,6 +68,7 @@ btnMobile.addEventListener('touchstart', (event) => {
   window.location.href = '/admin/unauthorized.html'
 } 
 } catch(err) {
+  console.log(err)
           const errors = err.response.data.errors
           errorHandler.returnErrors(errors)
 

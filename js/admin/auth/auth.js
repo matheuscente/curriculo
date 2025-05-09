@@ -59,7 +59,6 @@ export default class Auth {
       }
     } catch (err) {
       if (err.status === 401) {
-        window.location.href = 'unauthorized'
         return false;
       }
     }

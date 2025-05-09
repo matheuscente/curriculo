@@ -40,8 +40,9 @@ export default class Modal {
     
     
     <legend class="modal-project-label">Tecnologias</legend>
-    
-      ${(await this.getTechs()).join("")}
+      <div class="modal-techs">
+        ${(await this.getTechs()).join("")}
+      </div>
     
           <label for="area" class="modal-project-label">Área</label>
           <select id="area" name="area" class="modal-project-select" ${action === "post" && 'required'}>

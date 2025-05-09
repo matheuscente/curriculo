@@ -122,4 +122,11 @@ ul, h1, h2, p, li {
      }
   }
 
+    @media (max-width: 500px) {
+    .content {
+       padding: 0px;
+     }
+    
+  }
+
 

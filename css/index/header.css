@@ -17,15 +17,17 @@
     display: flex;
     gap: 3rem;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .header-list a{
     flex: 1;
     font-size: 1.1rem;
-    color: var(--c11);
+    color: var(--c1);
     width: 100%;
     padding: 10px;
     display: inline-block;
+    text-align: center;
 }
 
 .header-list li:hover {
@@ -71,6 +73,10 @@
       overflow-y: hidden;
    }
 
+   .header-list.admin {
+    top: 70px
+   }
+
 
    .nav-header.show .header-list {
       overflow-y: hidden;
@@ -94,8 +100,8 @@
         border-radius: 4px;
     }
 
-    .show .header-list .header-nav-item a,
-    .show .header-list .header-nav-item .header-button{
+     .header-list a,
+     .header-list .header-button{
         color: black
     }
 }

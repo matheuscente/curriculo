@@ -82,6 +82,17 @@ body {
   background-color: #0e131a;
 }
 
+.modal-techs {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  gap: 1rem
+}
+
+.modal-tech-item {
+  padding: .5rem
+}
+
 
 .modal-project-close-btn {
   position: absolute;

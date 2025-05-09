@@ -10,27 +10,7 @@ export default class Areas extends AbstractTemplate{
 
     //retorna o template de areas
      areasTemplate() {
-        return `   <header class="admin-header">
-            <div class="admin-header-conteiner">
-                <span id="user-type"></span>
-                <nav class="nav-header">
-                <button id="btn-mobile" aria-label="botão mostrar menu">
-                <span id="hamburguer"></span>
-            </button>
-                    <ul class="header-list">
-                        <li class="header-nav-item hover"><a href="./projects.html">projetos</a></li>
-    
-                        <li class="header-nav-item hover"><a href="./areas.html">areas</a></li>
-    
-                        <li class="header-nav-item hover"><a href="./technologies.html">tecnologias</a></li>
-                        <li class="header-nav-item hover"><button class="header-button">Sair</button>
-                        </li>
-                    </ul>
-                </nav>
-    
-            </div>
-    
-        </header>
+        return ` ${this.templateHeader()}
         <main class="content">
                 <div class="item-header">
                     <h2 class="admin-title">Áreas</h2>
@@ -40,12 +20,7 @@ export default class Areas extends AbstractTemplate{
                 </ul>
         </main>
     
-        <footer class="admin-footer">
-             <div class="footer-icon">
-                <a href="https://www.linkedin.com/in/vicente-dos-santos-b48805196/" target="_blank"><img src="../img/linkedin.svg" alt="developer linkedin link"> <a>
-            </div>
-            <div>Vicente Matheus dos Santos Souza</div>
-        </footer>
+        ${this.templateFooter()}
     `
     }
 

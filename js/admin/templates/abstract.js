@@ -10,6 +10,39 @@ export default class AbstractTemplate {
 
   }
 
+  templateHeader() {
+    return ` <header class="admin-header">
+            <div class="admin-header-conteiner">
+                <a href="./admin.html" id="user-type"></a>
+                <nav class="nav-header">
+                <button id="btn-mobile" aria-label="botão mostrar menu">
+                <span id="hamburguer" class="admin"></span>
+            </button>
+                    <ul class="header-list admin">
+                        <li class="hover"><a class="admin-header-color-link" href="./projects.html">projetos</a></li>
+    
+                        <li class="hover"><a class="admin-header-color-link" href="./areas.html">areas</a></li>
+    
+                        <li class="hover"><a href="./technologies.html" class="admin-header-color-link" >tecnologias</a></li>
+                        <li class="hover"><button class=" header-button">Sair</button>
+                        </li>
+                    </ul>
+                </nav>
+    
+            </div>
+    
+        </header>`
+  }
+
+  templateFooter() {
+    return ` <footer class="admin-footer">
+            <div class="footer-icon">
+                <a href="https://www.linkedin.com/in/vicente-dos-santos-b48805196/" target="_blank"><img src="../img/linkedin.svg" alt="developer linkedin link"> <a>
+            </div>
+            <div>Vicente Matheus dos Santos Souza</div>
+        </footer>`
+  }
+
   //template de area e tech
   techAndArea(item, template) {
     return `<h2 class="titulo1">${item.title}</h2>
@@ -38,9 +71,9 @@ export default class AbstractTemplate {
 
         if(info.data.role === "admin") {
           const usersButton = document.createElement('li')
-          usersButton.innerHTML = '<a href="./users.html">usuários</a>'
-          const headerNav = document.querySelector('.header-nav')
-          usersButton.classList.add('header-nav-item')
+          usersButton.innerHTML = '<a class="admin-header-color-link" href="./users.html">usuários</a>'
+          const headerNav = document.querySelector('.header-list')
+          usersButton.classList.add('hover')
           headerNav.insertBefore(usersButton, headerNav.firstChild)
         }
   
