@@ -142,8 +142,10 @@ export default class Modal {
             window.location.reload();
           
           
-        } else if (action === "patch") {
-          const data = {
+        } else if (action === "put") {
+          let data;
+          if(target.id === "projects") {
+            data = {
             title: formData.get("titulo"),
             description: formData.get("descricao"),
             year: formData.get("ano"),
@@ -151,17 +153,17 @@ export default class Modal {
             area: formData.get("area"),
             inProgress: formData.get("progresso"),
           };
-      
-            for (let field in data) {
-              if (data[field]) {
-                const update = {
-                  field: field,
-                  value: data[field],
-                };
+          } else if(target.id === "areas" || target.id === "technologies") {
+            data = {
+            title: formData.get("titulo"),
+            description: formData.get("descricao"),
+            }
+          }
+  
              
-                  await api.patchData(
+                  await api.putData(
                     `http://localhost:3000/api/v1/${target.id}/${target.value}`,
-                    update,
+                    data,
                     {
                       withCredentials: true,
                       headers: {
@@ -169,8 +171,8 @@ export default class Modal {
                       },
                     }
                   );
-              }
-            }
+              
+
             window.location.reload()
           
         }
@@ -178,6 +180,7 @@ export default class Modal {
         this.closeModal()
       }
       catch(err) {
+        console.log(err)
         event.preventDefault()
         const errors = err.response.data.errors
         formatErrors.returnErrors(errors)

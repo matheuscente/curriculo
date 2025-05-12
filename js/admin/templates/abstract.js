@@ -50,7 +50,7 @@ export default class AbstractTemplate {
                         <div class="item-options">
                             <button id="${template}" value="${
       item.id
-    }" class=" ${template} button-item-options patch editProject">editar</button>
+    }" class=" ${template} button-item-options put editProject">editar</button>
                             <button id="${template}" value="${
       item.id
     }" class=" ${template} button-item-options delete excludeProject">excluir</button>

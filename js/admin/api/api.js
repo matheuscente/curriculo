@@ -10,8 +10,8 @@ export default class Api {
     return returnData;
   }
 
-  async patchData(url, data, options) {
-    const returnData = await axios.patch(url, data, options);
+  async putData(url, data, options) {
+    const returnData = await axios.put(url, data, options);
     return returnData;
   }
 

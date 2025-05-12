@@ -100,7 +100,9 @@ const errors = {
          "technologies must be an array": "tecnologias deve ser uma lista de tecnologias",
         "year must be a number": "informe um ano válido",
         "technologies must contain at least 1 items": "informe pelo menos uma tecnologia",
-        "area must be a number": "informe uma area válida"
+        "area must be a number": "informe uma area válida",
+        "value length must be less than or equal to 20 characters long": "O título deve possui no máximo 20 caracteres",
+        "value length must be less than or equal to 150 characters long": "A descrição deve possui no máximo 150 caracteres"
     }
 }
 

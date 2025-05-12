@@ -110,9 +110,9 @@ export async function makeAction(event, auth) {
   } else if (event.target.classList.contains("post")) {
     await modal.openModal(event.target, "post");
     await modal.sendModalData(event.target, "post");
-  } else if (event.target.classList.contains("patch")) {
-    await modal.openModal(event.target, "patch");
-    await modal.sendModalData(event.target, "patch");
+  } else if (event.target.classList.contains("put")) {
+    await modal.openModal(event.target, "put");
+    await modal.sendModalData(event.target, "put");
   } else if (event.target.classList.contains("delete")) {
     modal.showDeleteConfirmationModal(async () => {
       try {
