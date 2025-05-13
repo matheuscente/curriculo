@@ -28,19 +28,16 @@ if (isAuthenticated) {
 
       if(window.innerWidth <= 900) {
     if(projectsList[0].childNodes.length >= 3) {
-      console.log(projectsList[2].childNodes)
   
       projectsList[0].style.justifyContent = 'left'
     }
   
     if(projectsList[1].childNodes.length >= 4) {
-      console.log(projectsList[2].childNodes)
   
       projectsList[1].style.justifyContent = 'left'
     }
   
     if(projectsList[2].childNodes.length >= 4) {
-      console.log(projectsList[2].childNodes)
       projectsList[2].style.justifyContent = 'left'
     }
   } else {
@@ -52,19 +49,16 @@ if (isAuthenticated) {
   window.addEventListener('resize', () => {
     if(window.innerWidth <= 900) {
     if(projectsList[0].childNodes.length >= 3) {
-      console.log(projectsList[2].childNodes)
   
       projectsList[0].style.justifyContent = 'left'
     }
   
     if(projectsList[1].childNodes.length >= 4) {
-      console.log(projectsList[2].childNodes)
   
       projectsList[1].style.justifyContent = 'left'
     }
   
     if(projectsList[2].childNodes.length >= 4) {
-      console.log(projectsList[2].childNodes)
       projectsList[2].style.justifyContent = 'left'
     }
   } else {
@@ -94,9 +88,10 @@ btnMobile.addEventListener('touchstart', (event) => {
      await makeAction(event, auth)
     });
 } else {
-  window.location.href = '/admin/unauthorized.html'
+ // window.location.href = '/admin/unauthorized.html'
 } 
 } catch(err) {
+  console.log(err)
           const errors = err.response.data.errors
           errorHandler.returnErrors(errors)
 

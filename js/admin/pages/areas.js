@@ -28,7 +28,6 @@ if (isAuthenticated) {
       if(window.innerWidth <= 900) {
   
     if(areasList.childNodes.length >= 4) {
-      console.log(areasList.childNodes)
   
       areasList.style.justifyContent = 'left'
     }

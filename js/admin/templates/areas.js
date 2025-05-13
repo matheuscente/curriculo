@@ -39,7 +39,7 @@ export default class Areas extends AbstractTemplate{
           return `<option disabled>Não há areas cadastradas, favor cadastrar uma area</option>`;
         } else {
           const data = [
-            '<option value="false" disabled selected>Selecione uma opção</option>',
+            '<option value="0" disabled selected>Selecione uma opção</option>',
           ];
           data.push(
             areas.map((item) => {

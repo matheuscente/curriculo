@@ -28,7 +28,6 @@ if (isAuthenticated) {
       if(window.innerWidth <= 900) {
   
     if(projectsList.childNodes.length >= 4) {
-      console.log(projectsList.childNodes)
   
       projectsList.style.justifyContent = 'left'
     }

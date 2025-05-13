@@ -58,7 +58,19 @@ export default class Auth {
         return true;
       }
     } catch (err) {
+      console.log(err)
       if (err.status === 401) {
+        if(err.response.data.errors[0].error === "token expired") {
+          try {
+            await api.putData('http://localhost:3000/api/v1/session/newJwt',null, {
+              withCredentials: true
+            })
+            return true
+          }catch(err) {
+            console.log(err)
+            return false
+          }
+        }
         return false;
       }
     }

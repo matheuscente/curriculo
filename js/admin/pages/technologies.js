@@ -27,7 +27,6 @@ if (isAuthenticated) {
       if(window.innerWidth <= 900) {
   
     if(technologiesList.childNodes.length >= 4) {
-      console.log(technologiesList.childNodes)
   
       technologiesList.style.justifyContent = 'left'
     }

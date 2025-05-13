@@ -107,6 +107,82 @@ export default class Modal {
       
       try {
         if (action === "post") {
+          await this.postItem(formData, target, tecnologiasSelecionadas)
+            window.location.reload();
+          
+          
+        } else if (action === "put") {
+          await this.putItem(formData, target, tecnologiasSelecionadas)
+              
+            window.location.reload()
+          
+        }
+
+        this.closeModal()
+      }
+      catch(err) {
+        console.log(err)
+        event.preventDefault()
+        const errors = err.response.data.errors
+        formatErrors.returnErrors(errors)
+      }
+      
+    });
+  }
+
+  async putItem(formData, target, tecnologiasSelecionadas) {
+    let data = {};
+          if(target.id === "projects") {
+            const formItems = {
+            title: formData.get("titulo"),
+            description: formData.get("descricao"),
+            year: formData.get("ano"),
+            technologies: tecnologiasSelecionadas,
+            area: formData.get("area") === '0' ? false : Number.parseInt( formData.get("area")),
+            inProgress: formData.get("progresso"),
+          };
+
+          for (const field in formItems) {
+            if(field !== 'inProgress' && field !== 'technologies') {
+              if(formItems[field]) {
+    
+                data[field] = formItems[field]
+              }
+            } else if(field === 'inProgress') {
+
+              if(formItems[field] === 'true' || formItems[field] === 'false') {
+                formItems[field] === 'true' ? data[field] = true : data[field] = false 
+              }
+            } else if(field === 'technologies') {
+              if(formItems[field].length >= 1) {
+                data[field] = formItems[field]
+              }
+            }
+          }
+          } else if(target.id === "areas" || target.id === "technologies") {
+            data = {
+            title: formData.get("titulo"),
+            description: formData.get("descricao"),
+            }
+          }
+  
+             
+                  await api.putData(
+                    `http://localhost:3000/api/v1/${target.id}/${target.value}`,
+                    data,
+                    {
+                      withCredentials: true,
+                      headers: {
+                         'X-CSRF-Token': getCookie('XSRF-TOKEN')
+                      },
+                    }
+                  );
+  }
+
+
+
+  async postItem(formData, target, tecnologiasSelecionadas) {
+
           let data;
           if (target.id === "projects") {
             data = {
@@ -139,54 +215,6 @@ export default class Modal {
                 },
               }
             );
-            window.location.reload();
-          
-          
-        } else if (action === "put") {
-          let data;
-          if(target.id === "projects") {
-            data = {
-            title: formData.get("titulo"),
-            description: formData.get("descricao"),
-            year: formData.get("ano"),
-            technologies: tecnologiasSelecionadas.length >= 1 ? tecnologiasSelecionadas : false,
-            area: formData.get("area"),
-            inProgress: formData.get("progresso"),
-          };
-          } else if(target.id === "areas" || target.id === "technologies") {
-            data = {
-            title: formData.get("titulo"),
-            description: formData.get("descricao"),
-            }
-          }
-  
-             
-                  await api.putData(
-                    `http://localhost:3000/api/v1/${target.id}/${target.value}`,
-                    data,
-                    {
-                      withCredentials: true,
-                      headers: {
-                         'X-CSRF-Token': getCookie('XSRF-TOKEN')
-                      },
-                    }
-                  );
-              
-
-            window.location.reload()
-          
-        }
-
-        this.closeModal()
-      }
-      catch(err) {
-        console.log(err)
-        event.preventDefault()
-        const errors = err.response.data.errors
-        formatErrors.returnErrors(errors)
-      }
-      
-    });
   }
 
   //Modal de confirmação de exclusão
