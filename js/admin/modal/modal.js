@@ -121,7 +121,6 @@ export default class Modal {
         this.closeModal()
       }
       catch(err) {
-        console.log(err)
         event.preventDefault()
         const errors = err.response.data.errors
         formatErrors.returnErrors(errors)

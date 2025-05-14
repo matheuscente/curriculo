@@ -23,11 +23,15 @@
 .header-list a{
     flex: 1;
     font-size: 1.1rem;
-    color: var(--c1);
+    color: var(--c11);
     width: 100%;
     padding: 10px;
     display: inline-block;
     text-align: center;
+}
+
+.header-list.admin a {
+    color: var(--c1)
 }
 
 .header-list li:hover {
@@ -100,7 +104,7 @@
         border-radius: 4px;
     }
 
-     .header-list a,
+     .header-list.admin a,
      .header-list .header-button{
         color: black
     }

@@ -38,12 +38,13 @@ export default class Auth {
         }
       } catch (err) {
         event.preventDefault();
-        console.log(err)
+        const errors = err.response.data.errors
+          formatErrors.returnErrors(errors)
       }
     });
   }
 
-  //faz uma requisição com o token salvo, caso não autorizado, direciona pra pag unauthorized
+  //faz uma requisição com o token salvo, caso não autorizado, direciona pra pag login
   async isAuth() {
     try {
 
@@ -58,21 +59,35 @@ export default class Auth {
         return true;
       }
     } catch (err) {
-      console.log(err)
       if (err.status === 401) {
         if(err.response.data.errors[0].error === "token expired") {
           try {
             await api.putData('http://localhost:3000/api/v1/session/newJwt',null, {
               withCredentials: true
             })
-            return true
+            window.location.reload()
           }catch(err) {
-            console.log(err)
-            return false
-          }
+
+            if(err.response.data.errors[0].error === "invalid session, please login again") {
+          const errors = err.response.data.errors
+          formatErrors.returnErrors(errors)
+          window.location.href = '/admin/login.html'
         }
-        return false;
+          }
+        } else if(err.response.data.errors[0].error === "invalid session, please login again") {
+          const errors = err.response.data.errors
+          formatErrors.returnErrors(errors)
+          
+        } else {
+          window.alert('você precisa estar logado para continuar')
+
       }
+      } else {
+          window.alert('você precisa estar logado para continuar')
+
+      }
+        window.location.href = '/admin/login.html'
+
     }
   }
 

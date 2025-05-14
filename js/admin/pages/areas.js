@@ -63,9 +63,7 @@ btnMobile.addEventListener('touchstart', (event) => {
     body.addEventListener("click", async (event) => {
      await makeAction(event, auth)
     });
-} else {
-  window.location.href = '/admin/unauthorized.html'
-} 
+}
 } catch(err) {
           const errors = err.response.data.errors
           errorHandler.returnErrors(errors)

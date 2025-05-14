@@ -3,7 +3,7 @@ const errors = {
         "invalid username or password": "usuário ou senha inválidos",
         "token invalid or not provided": "token inválido ou não fornecido",
         "forgot permission": "Permissão negada",
-        "your session as expired, please login again": "Sua sessão inspirou, por favor, logue novamente.",
+        "invalid session, please login again": "Sua sessão é inválida, por favor, logue novamente.",
         "for gerenerate a new token, the atual token need to be invalid": "para gerar um novo token, o token atual deve ser inválido",
         "invalid session":"sessão inválida",
          "refresh token invalid or not provided": "refresh token inválido ou não fornecido",

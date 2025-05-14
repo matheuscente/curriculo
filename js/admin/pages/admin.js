@@ -17,7 +17,6 @@ const isAuthenticated = await auth.isAuth();
 
 
 if (isAuthenticated) {
-
   body.innerHTML = admin.adminTemplate();
   await admin.header(auth);
   await attItems("http://localhost:3000/api/v1/projects", "projects");
@@ -87,11 +86,8 @@ btnMobile.addEventListener('touchstart', (event) => {
     body.addEventListener("click", async (event) => {
      await makeAction(event, auth)
     });
-} else {
- // window.location.href = '/admin/unauthorized.html'
-} 
+}
 } catch(err) {
-  console.log(err)
           const errors = err.response.data.errors
           errorHandler.returnErrors(errors)
 
