@@ -164,18 +164,6 @@ export default class Modal {
             description: formData.get("descricao"),
             }
           }
-  
-             
-                  await api.putData(
-                    `https://cms-gkqy.onrender.com/api/v1/${target.id}/${target.value}`,
-                    data,
-                    {
-                      withCredentials: true,
-                      headers: {
-                         'X-CSRF-Token': getCookie('XSRF-TOKEN')
-                      },
-                    }
-                  );
   }
 
 
@@ -203,17 +191,7 @@ export default class Modal {
               delete data.description;
             }
           }
-      
-            await api.postData(
-              `https://cms-gkqy.onrender.com/api/v1/${target.id}/${target.value}`,
-              data,
-              {
-                withCredentials: true,
-                headers: {
-                  'X-CSRF-Token': getCookie('XSRF-TOKEN')
-                },
-              }
-            );
+
   }
 
   //Modal de confirmação de exclusão

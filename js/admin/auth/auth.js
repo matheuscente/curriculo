@@ -29,10 +29,6 @@ export default class Auth {
         });
 
         if (data.status === 200 || data.status === 201) {
-          
-          await api.getData('https://cms-gkqy.onrender.com/api/v1/session/csrfToken', {
-            withCredentials: true
-          }) 
 
           window.location.href = "/admin/admin.html";
         }
@@ -94,15 +90,6 @@ export default class Auth {
   //faz o logout
   async logout() {
     try {
-      await api.postData(
-        "https://cms-gkqy.onrender.com/api/v1/session/logout",
-        null,{
-          withCredentials: true,
-          headers: {
-             'X-CSRF-Token': getCookie('XSRF-TOKEN')
-          },
-        }
-      );
       window.location.href = "/admin/login.html";
     } catch (err) {
       const errors = err.response.data.errors
