@@ -23,19 +23,19 @@ export async function attItems(url, template) {
     let itemClass;
     let errCase;
 
-    if (window.location.pathname === "/admin/areas.html") {
+    if (window.location.pathname === "/curriculo/admin/areas.html") {
       if (template === "areas") {
         itemClass = ["area-item", "project-bg"];
         errCase = "areas";
         projectSession = document.querySelectorAll(".items-list")[0];
       }
-    } else if (window.location.pathname === "/admin/technologies.html") {
+    } else if (window.location.pathname === "/curriculo/admin/technologies.html") {
       if (template === "technologies") {
         itemClass = ["area-item", "project-bg"];
         errCase = "tecnologias";
         projectSession = document.querySelectorAll(".items-list")[0];
       }
-    } else if (window.location.pathname === "/admin/admin.html") {
+    } else if (window.location.pathname === "/curriculo/admin/admin.html") {
       if (template === "projects") {
         itemClass = "project-bg";
         errCase = "projetos";
@@ -51,7 +51,7 @@ export async function attItems(url, template) {
         errCase = "areas";
         projectSession = document.querySelectorAll(".items-list")[1];
       }
-    } else if (window.location.pathname === "/admin/projects.html") {
+    } else if (window.location.pathname === "/curriculo/admin/projects.html") {
       if (template === "projects") {
         itemClass = ["project-bg"];
         errCase = "projetos";
