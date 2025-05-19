@@ -195,7 +195,7 @@ export default class Modal {
               delete data.description;
             }
 
-            await api.postData('https://cms-gkqy.onrender.com/api/v1/projects', data, {
+            await api.postData(`https://cms-gkqy.onrender.com/api/v1/${target.id}`, data, {
               withCredentials: true
             })
           }
