@@ -181,6 +181,10 @@ export default class Modal {
               url: formData.get("url"),
               inProgress: formData.get("progresso") === "true",
             };
+
+            await api.postData('https://cms-gkqy.onrender.com/api/v1/projects', data, {
+              withCredentials: true
+            })
           } else if (target.id === "areas" || target.id === "technologies") {
             data = {
               title: formData.get("titulo"),
@@ -190,6 +194,10 @@ export default class Modal {
             if (!data.description) {
               delete data.description;
             }
+
+            await api.postData('https://cms-gkqy.onrender.com/api/v1/projects', data, {
+              withCredentials: true
+            })
           }
 
   }

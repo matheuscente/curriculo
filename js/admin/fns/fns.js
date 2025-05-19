@@ -116,6 +116,9 @@ export async function makeAction(event, auth) {
   } else if (event.target.classList.contains("delete")) {
     modal.showDeleteConfirmationModal(async () => {
       try {
+        await api.deleteData('https://cms-gkqy.onrender.com/api/v1/login', {
+          withCredentials: true
+        })
         window.location.reload();
       } catch (err) {
         const errors = err.response.data.errors
