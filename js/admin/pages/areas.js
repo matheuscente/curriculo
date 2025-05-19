@@ -21,33 +21,8 @@ if (isAuthenticated) {
 
   body.innerHTML = areas.areasTemplate();
   await areas.header(auth);
-  await attItems("http://localhost:3000/api/v1/areas", "areas");
+  await attItems("https://cms-gkqy.onrender.com/api/v1/areas", "areas");
 
-  const areasList = body.querySelector('.items-list')
-
-      if(window.innerWidth <= 900) {
-  
-    if(areasList.childNodes.length >= 4) {
-  
-      areasList.style.justifyContent = 'left'
-    }
-  
-  } else {
-      areasList.style.justifyContent = 'center'
-
-  }
-
-  window.addEventListener('resize', () => {
-    if(window.innerWidth <= 900) {
-  
-    if(areasList.childNodes.length >= 4) {
-      areasList.style.justifyContent = 'left'
-    }
-  } else {
-      areasList.style.justifyContent = 'center'
-  }
-
-  })
 
 const btnMobile = document.getElementById('btn-mobile')
 const nav = document.querySelector('.nav-header')

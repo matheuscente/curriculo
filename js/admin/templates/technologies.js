@@ -42,7 +42,7 @@ export default class Technologies extends AbstractTemplate {
         withCredentials: true,
 
       }
-      let techs = await api.getData("http://localhost:3000/api/v1/technologies", options);
+      let techs = await api.getData("https://cms-gkqy.onrender.com/api/v1/technologies", options);
       techs = techs.data;
 
       if(techs.length === 0) {

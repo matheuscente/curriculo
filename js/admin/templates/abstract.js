@@ -63,7 +63,7 @@ export default class AbstractTemplate {
         withCredentials: true,
   
       }
-      const info = await api.getData("http://localhost:3000/api/v1/users/info", options);
+      const info = await api.getData("https://cms-gkqy.onrender.com/api/v1/users/info", options);
       const DOMrole = document.querySelector("#user-type");
   
       DOMrole.innerHTML =

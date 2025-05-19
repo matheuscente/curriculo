@@ -167,7 +167,7 @@ export default class Modal {
   
              
                   await api.putData(
-                    `http://localhost:3000/api/v1/${target.id}/${target.value}`,
+                    `https://cms-gkqy.onrender.com/api/v1/${target.id}/${target.value}`,
                     data,
                     {
                       withCredentials: true,
@@ -205,7 +205,7 @@ export default class Modal {
           }
       
             await api.postData(
-              `http://localhost:3000/api/v1/${target.id}/${target.value}`,
+              `https://cms-gkqy.onrender.com/api/v1/${target.id}/${target.value}`,
               data,
               {
                 withCredentials: true,

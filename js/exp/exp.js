@@ -8,7 +8,7 @@ export default class Exp {
   async projectsIndex () {
     (this.api)
     const ul = document.querySelector('.experiencia-lista')
-    const url = 'http://localhost:3000/api/v1/projects'
+    const url = 'https://cms-gkqy.onrender.com/api/v1/projects'
     
     try {
         let data = await this.api.getData(url)

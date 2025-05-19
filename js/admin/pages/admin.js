@@ -19,13 +19,12 @@ const isAuthenticated = await auth.isAuth();
 if (isAuthenticated) {
   body.innerHTML = admin.adminTemplate();
   await admin.header(auth);
-  await attItems("http://localhost:3000/api/v1/projects", "projects");
-  await attItems("http://localhost:3000/api/v1/areas", "areas");
-  await attItems("http://localhost:3000/api/v1/technologies", "technologies");
+  await attItems("https://cms-gkqy.onrender.com/api/v1/projects", "projects");
+  await attItems("https://cms-gkqy.onrender.com/api/v1/areas", "areas");
+  await attItems("https://cms-gkqy.onrender.com/api/v1/technologies", "technologies");
 
   const projectsList = body.querySelectorAll('.items-list')
 
-      if(window.innerWidth <= 900) {
     if(projectsList[0].childNodes.length >= 3) {
   
       projectsList[0].style.justifyContent = 'left'
@@ -39,32 +38,30 @@ if (isAuthenticated) {
     if(projectsList[2].childNodes.length >= 4) {
       projectsList[2].style.justifyContent = 'left'
     }
-  } else {
-    for(let i = 0; i < 3; i++) {
-      projectsList[i].style.justifyContent = 'center'
-    }
-  }
+  
 
   window.addEventListener('resize', () => {
-    if(window.innerWidth <= 900) {
+
     if(projectsList[0].childNodes.length >= 3) {
   
       projectsList[0].style.justifyContent = 'left'
+    } else {
+      projectsList[0].style.justifyContent = 'center'
     }
   
     if(projectsList[1].childNodes.length >= 4) {
   
       projectsList[1].style.justifyContent = 'left'
+    } else {
+      projectsList[1].style.justifyContent = 'center'
     }
   
     if(projectsList[2].childNodes.length >= 4) {
       projectsList[2].style.justifyContent = 'left'
+    } else {
+      projectsList[2].style.justifyContent = 'center'
     }
-  } else {
-    for(let i = 0; i < 3; i++) {
-      projectsList[i].style.justifyContent = 'center'
-    }
-  }
+
 
   })
 
@@ -86,9 +83,9 @@ btnMobile.addEventListener('touchstart', (event) => {
     body.addEventListener("click", async (event) => {
      await makeAction(event, auth)
     });
-}
-} catch(err) {
+
+  }
+}catch(err) {
           const errors = err.response.data.errors
           errorHandler.returnErrors(errors)
-
 }

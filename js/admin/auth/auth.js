@@ -9,7 +9,7 @@ export default class Auth {
 
   // faz uma requisição na rota de login com os dados fornecidos pelo usuário
   async login() {
-    const url = "http://localhost:3000/api/v1/login";
+    const url = "https://cms-gkqy.onrender.com/api/v1/login";
 
     const form = document.querySelector("#login-form");
 
@@ -30,13 +30,14 @@ export default class Auth {
 
         if (data.status === 200 || data.status === 201) {
           
-          await api.getData('http://localhost:3000/api/v1/session/csrfToken', {
+          await api.getData('https://cms-gkqy.onrender.com/api/v1/session/csrfToken', {
             withCredentials: true
           }) 
 
           window.location.href = "/admin/admin.html";
         }
       } catch (err) {
+        console.log(err)
         event.preventDefault();
         const errors = err.response.data.errors
           formatErrors.returnErrors(errors)
@@ -52,7 +53,7 @@ export default class Auth {
         withCredentials: true
       };
       const response = await api.getData(
-        "http://localhost:3000/api/v1/users/info",
+        "https://cms-gkqy.onrender.com/api/v1/users/info",
         options
       );
       if (response.status === 200 || response.status === 201) {
@@ -62,7 +63,7 @@ export default class Auth {
       if (err.status === 401) {
         if(err.response.data.errors[0].error === "token expired") {
           try {
-            await api.putData('http://localhost:3000/api/v1/session/newJwt',null, {
+            await api.putData('https://cms-gkqy.onrender.com/api/v1/session/newJwt',null, {
               withCredentials: true
             })
             window.location.reload()
@@ -95,7 +96,7 @@ export default class Auth {
   async logout() {
     try {
       await api.postData(
-        "http://localhost:3000/api/v1/session/logout",
+        "https://cms-gkqy.onrender.com/api/v1/session/logout",
         null,{
           withCredentials: true,
           headers: {

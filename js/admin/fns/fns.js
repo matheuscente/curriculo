@@ -118,7 +118,7 @@ export async function makeAction(event, auth) {
       try {
         const cookie = getCookie("XSRF-TOKEN");
         await api.deleteData(
-          `http://localhost:3000/api/v1/${event.target.id}/${event.target.value}`,
+          `https://cms-gkqy.onrender.com/api/v1/${event.target.id}/${event.target.value}`,
           {
             withCredentials: true,
             headers: {

@@ -32,7 +32,7 @@ export default class Areas extends AbstractTemplate{
           withCredentials: true,
 
         }
-        let areas = await api.getData("http://localhost:3000/api/v1/areas", options);
+        let areas = await api.getData("https://cms-gkqy.onrender.com/api/v1/areas", options);
         areas = areas.data;
 
         if(areas.length === 0 ) {

@@ -20,33 +20,8 @@ if (isAuthenticated) {
 
   body.innerHTML = technologies.technologiesTemplate();
   await technologies.header(auth);
-  await attItems("http://localhost:3000/api/v1/technologies", "technologies");
+  await attItems("https://cms-gkqy.onrender.com/api/v1/technologies", "technologies");
 
-  const technologiesList = body.querySelector('.items-list')
-
-      if(window.innerWidth <= 900) {
-  
-    if(technologiesList.childNodes.length >= 4) {
-  
-      technologiesList.style.justifyContent = 'left'
-    }
-  
-  } else {
-      technologiesList.style.justifyContent = 'center'
-
-  }
-
-  window.addEventListener('resize', () => {
-    if(window.innerWidth <= 900) {
-  
-    if(technologiesList.childNodes.length >= 4) {
-      technologiesList.style.justifyContent = 'left'
-    }
-  } else {
-      technologiesList.style.justifyContent = 'center'
-  }
-
-  })
 
 const btnMobile = document.getElementById('btn-mobile')
 const nav = document.querySelector('.nav-header')

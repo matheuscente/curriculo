@@ -21,33 +21,7 @@ if (isAuthenticated) {
 
   body.innerHTML = projects.projectsTemplate();
   await projects.header(auth);
-  await attItems("http://localhost:3000/api/v1/projects", "projects");
-
-  const projectsList = body.querySelector('.items-list')
-
-      if(window.innerWidth <= 900) {
-  
-    if(projectsList.childNodes.length >= 4) {
-  
-      projectsList.style.justifyContent = 'left'
-    }
-  
-  } else {
-      projectsList.style.justifyContent = 'center'
-
-  }
-
-  window.addEventListener('resize', () => {
-    if(window.innerWidth <= 900) {
-  
-    if(projectsList.childNodes.length >= 4) {
-      projectsList.style.justifyContent = 'left'
-    }
-  } else {
-      projectsList.style.justifyContent = 'center'
-  }
-
-  })
+  await attItems("https://cms-gkqy.onrender.com/api/v1/projects", "projects");
 
 const btnMobile = document.getElementById('btn-mobile')
 const nav = document.querySelector('.nav-header')
