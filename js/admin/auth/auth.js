@@ -37,7 +37,6 @@ export default class Auth {
           window.location.href = "/admin/admin.html";
         }
       } catch (err) {
-        console.log(err)
         event.preventDefault();
         const errors = err.response.data.errors
           formatErrors.returnErrors(errors)
