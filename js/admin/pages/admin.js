@@ -25,38 +25,38 @@ if (isAuthenticated) {
 
   const projectsList = body.querySelectorAll('.items-list')
 
-    if(projectsList[0].childNodes.length >= 3) {
+    if(projectsList[0].childNodes.length >= 3 || window.innerWidth <= 900) {
   
       projectsList[0].style.justifyContent = 'left'
     }
   
-    if(projectsList[1].childNodes.length >= 4) {
+    if(projectsList[1].childNodes.length >= 4 || window.innerWidth <= 900) {
   
       projectsList[1].style.justifyContent = 'left'
     }
   
-    if(projectsList[2].childNodes.length >= 4) {
+    if(projectsList[2].childNodes.length >= 4 || window.innerWidth <= 900) {
       projectsList[2].style.justifyContent = 'left'
     }
   
 
   window.addEventListener('resize', () => {
 
-    if(projectsList[0].childNodes.length >= 3) {
+    if(projectsList[0].childNodes.length >= 3 || window.innerWidth <= 900) {
   
       projectsList[0].style.justifyContent = 'left'
     } else {
       projectsList[0].style.justifyContent = 'center'
     }
   
-    if(projectsList[1].childNodes.length >= 4) {
+    if(projectsList[1].childNodes.length >= 4 || window.innerWidth <= 900) {
   
       projectsList[1].style.justifyContent = 'left'
     } else {
       projectsList[1].style.justifyContent = 'center'
     }
   
-    if(projectsList[2].childNodes.length >= 4) {
+    if(projectsList[2].childNodes.length >= 4 || window.innerWidth <= 900) {
       projectsList[2].style.justifyContent = 'left'
     } else {
       projectsList[2].style.justifyContent = 'center'
