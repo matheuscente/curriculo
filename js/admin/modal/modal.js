@@ -165,7 +165,7 @@ export default class Modal {
             }
           }
 
-            await api.putData(`https://cms-gkqy.onrender.com/api/v1/${target.id}`, data, {
+            await api.putData(`https://cms-gkqy.onrender.com/api/v1/${target.id}/${target.value}`, data, {
               withCredentials: true
             })
   }
