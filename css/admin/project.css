@@ -134,6 +134,7 @@ section {
 
 @media (max-width: 600px) {
     .item-header {
+        margin-left: 0px;
         gap: 1rem;
         flex-direction: column;
     }

@@ -93,6 +93,7 @@ export default class Auth {
         withCredentials: true
       })
       window.location.href = "/curriculo/admin/login.html";
+      window.location.reload()
     } catch (err) {
       const errors = err.response.data.errors
       formatErrors.returnErrors(errors)
