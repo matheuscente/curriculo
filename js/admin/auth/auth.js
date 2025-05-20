@@ -90,6 +90,9 @@ export default class Auth {
   //faz o logout
   async logout() {
     try {
+      await api.postData('https://cms-gkqy.onrender.com/api/v1/session/logout', null, {
+        withCredentials: true
+      })
       window.location.href = "/curriculo/admin/login.html";
     } catch (err) {
       const errors = err.response.data.errors

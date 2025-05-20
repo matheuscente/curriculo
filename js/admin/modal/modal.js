@@ -164,6 +164,10 @@ export default class Modal {
             description: formData.get("descricao"),
             }
           }
+
+            await api.putData(`https://cms-gkqy.onrender.com/api/v1/${target.id}`, data, {
+              withCredentials: true
+            })
   }
 
 
@@ -181,10 +185,6 @@ export default class Modal {
               url: formData.get("url"),
               inProgress: formData.get("progresso") === "true",
             };
-
-            await api.postData('https://cms-gkqy.onrender.com/api/v1/projects', data, {
-              withCredentials: true
-            })
           } else if (target.id === "areas" || target.id === "technologies") {
             data = {
               title: formData.get("titulo"),
@@ -195,10 +195,12 @@ export default class Modal {
               delete data.description;
             }
 
-            await api.postData(`https://cms-gkqy.onrender.com/api/v1/${target.id}`, data, {
+            
+          }
+
+          await api.postData(`https://cms-gkqy.onrender.com/api/v1/${target.id}`, data, {
               withCredentials: true
             })
-          }
 
   }
 
