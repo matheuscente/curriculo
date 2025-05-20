@@ -67,7 +67,7 @@ export default class Auth {
             if(err.response.data.errors[0].error === "invalid session, please login again") {
           const errors = err.response.data.errors
           formatErrors.returnErrors(errors)
-          window.location.href = '"/curriculo/admin/login.html'
+          window.location.href = '/curriculo/admin/login.html'
         }
           }
         } else if(err.response.data.errors[0].error === "invalid session, please login again") {
@@ -82,7 +82,7 @@ export default class Auth {
           window.alert('você precisa estar logado para continuar')
 
       }
-        window.location.href = '"/curriculo/admin/login.html'
+        window.location.href = '/curriculo/admin/login.html'
 
     }
   }
