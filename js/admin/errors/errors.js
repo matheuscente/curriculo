@@ -103,6 +103,10 @@ const errors = {
         "area must be a number": "informe uma area válida",
         "value length must be less than or equal to 20 characters long": "O título deve possui no máximo 20 caracteres",
         "value length must be less than or equal to 150 characters long": "A descrição deve possui no máximo 150 caracteres"
+    },
+
+    "invalidSession": {
+        'invalid session, please login again': 'sessão inválida, favor logar novamente.'
     }
 }
 

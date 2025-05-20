@@ -63,7 +63,6 @@ export default class Auth {
             })
             window.location.reload()
           }catch(err) {
-            console.log(err.response.data.errors[0].name, err.response.data.errors[0].error, err.response.data.length)
             if(err.response.data.errors[0].error === "invalid session, please login again") {
           const errors = err.response.data.errors
           formatErrors.returnErrors(errors)

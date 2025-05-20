@@ -86,5 +86,6 @@ btnMobile.addEventListener('touchstart', (event) => {
 
   }
 }catch(err) {
-          console.log(err)
+  const errors = err.response.data.errors
+  formatErrors.returnErrors(errors)
 }
