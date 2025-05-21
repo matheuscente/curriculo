@@ -49,7 +49,6 @@ a {
 }
 
 .exp-p {
-    word-break: break-all;
     grid-row: 2 / 4;
     letter-spacing: 1.125;
     font-size: .9rem;
