@@ -17,7 +17,7 @@ const url = "https://cms-gkqy.onrender.com/api/v1/login";
     errorSpan.style.fontFamily = 'Arial'
     errorSpan.style.fontSize = '0.9 rem'
     errorSpan.style.marginBottom = '1rem'
-    errorSpan.style.color = 'var(c--12)'
+    errorSpan.style.color = '#000000'
     errorSpan.innerText = 'Aguarde...'
 
         form.insertBefore(errorSpan, btn)
