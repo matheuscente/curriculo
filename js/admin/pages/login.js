@@ -12,10 +12,13 @@ const url = "https://cms-gkqy.onrender.com/api/v1/login";
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      errorSpan.style.display = 'block'
-      errorSpan.style.marginBottom = '1rem'
-        errorSpan.style.color = 'var(c--12)'
-        errorSpan.innerText = 'Aguarde...'
+    errorSpan.style.display = 'block'
+    errorSpan.style.textAlign = 'center'
+    errorSpan.style.fontFamily = 'Arial'
+    errorSpan.style.fontSize = '0.9 rem'
+    errorSpan.style.marginBottom = '1rem'
+    errorSpan.style.color = 'var(c--12)'
+    errorSpan.innerText = 'Aguarde...'
 
         form.insertBefore(errorSpan, btn)
         auth.login(url, form).then(() => {
