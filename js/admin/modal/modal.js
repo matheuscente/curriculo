@@ -77,9 +77,9 @@ export default class Modal {
     </div>`;
     } else if(template === 'logout') {
       return `
-      <div class="modal-project-overlay" id="modalProjectOverlay">
-        <div class="modal-project-container">
-          <span style= "display: block">Fazendo logout...</span>
+      <div class="modal-confirm-overlay">
+        <div class="modal-confirm-container">
+          <p class="modal-confirm-text">Fazendo logout...</p>
         </div>
       </div>`
     }
