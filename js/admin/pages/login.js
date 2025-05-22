@@ -12,16 +12,16 @@ const url = "https://cms-gkqy.onrender.com/api/v1/login";
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-        errorSpan.style.color = '#FF0000'
-        errorSpan.innerText = 'Aguarde...'
+      errorSpan.style.marginBottom = '1rem'
         errorSpan.style.color = 'var(c--12)'
+        errorSpan.innerText = 'Aguarde...'
 
         form.insertBefore(errorSpan, btn)
         auth.login(url, form).then(() => {
             window.location.href = '/curriculo/admin/admin.html'
         }).catch((err) => {
              event.preventDefault();
-             if(err.response.data.errors === "invalid username or password") {
+             if(err.response.data.errors[0].error === "invalid username or password") {
                 errorSpan.style.color = '#FF0000'
                 errorSpan.innerText = 'usuário ou senha invalidos'
              } else {
