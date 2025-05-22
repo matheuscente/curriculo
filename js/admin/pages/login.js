@@ -12,6 +12,7 @@ const url = "https://cms-gkqy.onrender.com/api/v1/login";
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
+      errorSpan.style.display = 'block'
       errorSpan.style.marginBottom = '1rem'
         errorSpan.style.color = 'var(c--12)'
         errorSpan.innerText = 'Aguarde...'
