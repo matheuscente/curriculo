@@ -106,6 +106,7 @@ export async function attItems(url, template) {
 
 export async function makeAction(event, auth) {
   if(event.target.classList.contains("header-button")) {
+    await modal.openModal(event.target)
     await auth.logout()
   } else if (event.target.classList.contains("post")) {
     await modal.openModal(event.target, "post");

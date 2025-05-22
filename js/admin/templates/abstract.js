@@ -24,7 +24,7 @@ export default class AbstractTemplate {
                         <li class="hover"><a class="admin-header-color-link" href="./areas.html">areas</a></li>
     
                         <li class="hover"><a href="./technologies.html" class="admin-header-color-link" >tecnologias</a></li>
-                        <li class="hover"><button class=" header-button">Sair</button>
+                        <li class="hover"><button id="logout" class=" header-button">Sair</button>
                         </li>
                     </ul>
                 </nav>
