@@ -57,7 +57,7 @@ export default class AbstractTemplate {
                         </div>`;
   }
 
-  async header(auth) { 
+  async header() { 
     try{
       const options = {
         withCredentials: true,
@@ -77,11 +77,9 @@ export default class AbstractTemplate {
           headerNav.insertBefore(usersButton, headerNav.firstChild)
         }
   
-      const logoutButton = document.querySelector(".header-button");
-  
-      logoutButton.addEventListener("click", auth.logout);
+
     } catch (err) {
-      (err)
+      console.log(err)
     }
    
   }

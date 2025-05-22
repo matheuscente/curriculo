@@ -79,7 +79,7 @@ export default class Modal {
       return `
       <div class="modal-confirm-overlay">
         <div class="modal-confirm-container">
-          <p class="modal-confirm-text">Fazendo logout...</p>
+          <p>Fazendo logout...</p>
         </div>
       </div>`
     }
