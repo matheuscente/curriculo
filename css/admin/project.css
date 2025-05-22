@@ -22,7 +22,7 @@ html, body {
     overflow-x: auto;
     max-width: 90vw;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex: 1;
     justify-content: center;
     gap: 30px;
@@ -31,8 +31,9 @@ html, body {
     border-radius: 4px;
 }
 
-.content .items-list.admin-page {
-    flex-wrap: nowrap;
+.section.items-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 
