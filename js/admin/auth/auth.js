@@ -8,14 +8,7 @@ const formatErrors = new Errors()
 export default class Auth {
 
   // faz uma requisição na rota de login com os dados fornecidos pelo usuário
-  async login() {
-    const url = "https://cms-gkqy.onrender.com/api/v1/login";
-
-    const form = document.querySelector("#login-form");
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      try {
+   login(url, form) {
         const formData = new FormData(form);
 
         const loginData = {
@@ -24,20 +17,10 @@ export default class Auth {
         };
 
 
-        let data = await api.postData(url, loginData, {
+        return api.postData(url, loginData, {
           withCredentials: true
         });
-
-        if (data.status === 200 || data.status === 201) {
-
-          window.location.href = "/curriculo/admin/admin.html";
-        }
-      } catch (err) {
-        event.preventDefault();
-        const errors = err.response.data.errors
-          formatErrors.returnErrors(errors)
-      }
-    });
+  
   }
 
   //faz uma requisição com o token salvo, caso não autorizado, direciona pra pag login
@@ -93,7 +76,6 @@ export default class Auth {
         withCredentials: true
       })
       window.location.href = "/curriculo/admin/login.html";
-      window.location.reload()
     } catch (err) {
       const errors = err.response.data.errors
       formatErrors.returnErrors(errors)
