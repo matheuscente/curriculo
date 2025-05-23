@@ -97,10 +97,6 @@ body {
   padding: .5rem
 }
 
-.modal-tech-item:first-child {
-  margin-top: 1rem;
-}
-
 .modal-project-close-btn {
   position: absolute;
   top: 1rem;
