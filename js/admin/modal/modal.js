@@ -1,7 +1,5 @@
 import Api from "../api/api.js"
-import { getCookie } from "../fns/fns.js";
-import Errors
- from "../errors/errors.js";
+import Errors from "../errors/errors.js";
 
 const api = new Api()
 const formatErrors = new Errors()

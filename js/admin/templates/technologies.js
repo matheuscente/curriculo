@@ -15,7 +15,7 @@ export default class Technologies extends AbstractTemplate {
                 <div class="item-header">
                     <h2 class="admin-title">Tecnologias</h2>
                     <button id="technologies" class="post project-create button-item-options">criar tecnologia</button></div>
-                <ul class="items-list">
+                <ul class="section items-list">
                     
                 </ul>
         </main>
