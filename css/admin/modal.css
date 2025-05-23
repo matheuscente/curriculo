@@ -91,7 +91,6 @@ body {
 .modal-tech-item {
   display: flex;
   flex: 1;
-  justify-content: center;
   align-items: center;
   gap: .5rem;
   padding: .5rem
