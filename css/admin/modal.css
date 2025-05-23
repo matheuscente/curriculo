@@ -83,13 +83,17 @@ body {
 }
 
 .modal-techs {
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1;
-  gap: 1rem
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: .5rem
 }
 
 .modal-tech-item {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
   padding: .5rem
 }
 
