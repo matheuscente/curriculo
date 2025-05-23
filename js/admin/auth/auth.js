@@ -44,7 +44,7 @@ export default class Auth {
             await api.putData('https://cms-gkqy.onrender.com/api/v1/session/newJwt',null, {
               withCredentials: true
             })
-            window.location.reload()
+            window.location.href = '/curriculo/admin/admin.html'
           }catch(err) {
             if(err.response.data.errors[0].error === "invalid session, please login again") {
           const errors = err.response.data.errors
