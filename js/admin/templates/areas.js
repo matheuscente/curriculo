@@ -15,7 +15,7 @@ export default class Areas extends AbstractTemplate{
                 <div class="item-header">
                     <h2 class="admin-title">Áreas</h2>
                     <button id="areas" class="post project-create button-item-options">criar área</button></div>
-                <ul class="section items-list">
+                <ul class="grid-tech-area items-list">
                     
                 </ul>
         </main>

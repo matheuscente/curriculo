@@ -40,7 +40,7 @@ export default class Projects extends AbstractTemplate {
                 <div class="item-header">
                     <h2 class="admin-title">Projetos</h2>
                     <button id="projects" class="post project-create button-item-options">criar projeto</button></div>
-                <ul class="section items-list">
+                <ul class="grid-project items-list">
                     
                 </ul>
         </main>
