@@ -11,7 +11,7 @@ const url = "https://cms-gkqy.onrender.com/api/v1/login";
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-
+    window.alert('Este projeto utiliza uma instância gratuíta para backend, estando sujeita a inicialização a frio e lentidão. Conto com sua compreensão!')
     errorSpan.style.display = 'block'
     errorSpan.style.textAlign = 'center'
     errorSpan.style.fontFamily = 'Arial'

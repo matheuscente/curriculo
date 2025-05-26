@@ -80,6 +80,12 @@ export default class Modal {
           <p>Fazendo logout...</p>
         </div>
       </div>`
+    } else if(template === "getAwait") {
+      return `<div class="modal-confirm-overlay">
+        <div class="modal-confirm-container">
+          <p>Este projeto utiliza uma instância gratuíta para backend, estando sujeita a inicialização a frio e lentidão. Conto com sua compreensão!</p>
+        </div>
+      </div>`
     }
   }
 
