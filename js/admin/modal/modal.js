@@ -81,13 +81,13 @@ export default class Modal {
         </div>
       </div>`
     } else if(template === "getAwait") {
-      return `<div class="modal-confirm-overlay">
-        <div class="modal-confirm-container">
-          <p>Aguardando dados...
+      return `
+        div class="modal-confirm-container">
+          <p class="modal-confirm-text">Aguardando dados...
           <br>
-          Este projeto utiliza uma instância gratuíta para backend, estando sujeita a inicialização a frio e lentidão. Conto com sua compreensão!</p>
-        </div>
-      </div>`
+            Este projeto utiliza uma instância gratuíta para backend, estando sujeita a inicialização a frio e lentidão. Conto com sua compreensão!
+            </p>
+        </div>`
     }
   }
 
