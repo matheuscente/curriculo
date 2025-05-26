@@ -19,7 +19,7 @@ const getAwaitMockTarget = {
   id: "getAwait"
 };
 
-await modal.openModal(getAwaitMockTarget);
+await modal.openModal(getAwaitMockTarget, null, '.index-body');
 
 projects.projectsIndex().then(() => {
     setTimeout(() => {

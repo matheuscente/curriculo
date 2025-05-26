@@ -91,8 +91,8 @@ export default class Modal {
 
   
 //abre o modal
- async openModal(target, action) {
-    const main = document.querySelector(".content");
+ async openModal(target, action, main) {
+    const main = document.querySelector(main);
     const modal = document.createElement("div");
     modal.classList.add("modal");
     modal.innerHTML = await this.modalTemplate(target.id, action);

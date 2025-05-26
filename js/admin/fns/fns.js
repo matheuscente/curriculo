@@ -106,13 +106,13 @@ export async function attItems(url, template) {
 
 export async function makeAction(event, auth) {
   if(event.target.classList.contains("header-button")) {
-    await modal.openModal(event.target)
+    await modal.openModal(event.target, null, '.content')
     await auth.logout()
   } else if (event.target.classList.contains("post")) {
-    await modal.openModal(event.target, "post");
+    await modal.openModal(event.target, "post", '.content');
     await modal.sendModalData(event.target, "post");
   } else if (event.target.classList.contains("put")) {
-    await modal.openModal(event.target, "put");
+    await modal.openModal(event.target, "put", '.content');
     await modal.sendModalData(event.target, "put");
   } else if (event.target.classList.contains("delete")) {
     modal.showDeleteConfirmationModal(async () => {
