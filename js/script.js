@@ -4,11 +4,16 @@ import Exp from "../js/exp/exp.js";
 import Technologies from "../js/admin/templates/technologies.js";
 import Api from "../js/admin/api/api.js";
 import Modal from "../js/admin/modal/modal.js";
+import Areas from "../js/admin/templates/areas.js"
 
+const areas = new Areas()
 const technologies = new Technologies();
 const api = new Api();
 const projects = new Exp(api, technologies);
-const modal = new Modal();
+const modal = new Modal({
+  getAreas: areas.getAreas.bind(areas),
+  getTechs: technologies.getTechs.bind(technologies),
+});
 
 const getAwaitMockTarget = {
   id: "getAwait"
