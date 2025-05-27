@@ -83,10 +83,12 @@ export default class Modal {
     } else if(template === "getAwait") {
       return `
         <div class="modal-project-overlay" id="modalProjectOverlay">
-          <p class="modal-confirm-text">Aguardando dados...
-          <br>
-            Este projeto utiliza uma instância gratuíta para backend, estando sujeita a inicialização a frio e lentidão. Conto com sua compreensão!
+          <div class="modal-project-container">
+            <p class="modal-confirm-text">Aguardando dados...
+              <br>
+              Este projeto utiliza uma instância gratuíta para backend, estando sujeita a inicialização a frio e lentidão. Conto com sua compreensão!
             </p>
+          </div>
         </div>`
     }
   }
