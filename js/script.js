@@ -24,40 +24,7 @@ await modal.openModal(getAwaitMockTarget, null, ".index-body");
 projects
   .projectsIndex()
   .then(() => {
-    const closeModalBtn = document.createElement("button");
-    closeModalBtn.classList.add("modal-project-close-btn");
-    closeModalBtn.innerText = "x";
-
-    const modalConfirmConteiner = document.querySelector(
-      ".modal-confirm-container"
-    );
-
-    modalConfirmConteiner.appendChild(closeModalBtn);
-
-    closeModalBtn.addEventListener("click", () => {
-      modal.closeModal();
-      const nav = document.querySelector(".nav-header"),
-        btnMobile = document.getElementById("btn-mobile"),
-        btnHeader = document.querySelectorAll(".btn-header-list");
-
-      btnMobile.addEventListener("click", (event) => {
-        toggleMenu(event, nav);
-      });
-      btnMobile.addEventListener("touchstart", (event) => {
-        toggleMenu(event, nav);
-      });
-
-      btnHeader.forEach((btn) => {
-        btn.addEventListener("touchstart", () => {
-          scrollBehavior();
-          nav.classList.remove("show");
-        });
-        btn.addEventListener("click", () => {
-          scrollBehavior();
-          nav.classList.remove("show");
-        });
-      });
-    });
+    
 
     setTimeout(() => {
       modal.closeModal();
