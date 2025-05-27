@@ -84,8 +84,8 @@ export default class Modal {
       return `
         <div class="modal-project-overlay" id="modalProjectOverlay">
           <div class="modal-project-container">
-            <p class="modal-confirm-text">Aguardando dados...
-              <br>
+            <p class="modal-confirm-text">Aguardando dados...<p/>
+            <p>
               Este projeto utiliza uma instância gratuíta para backend, estando sujeita a inicialização a frio e lentidão. Conto com sua compreensão!
             </p>
           </div>
