@@ -1,0 +1,107 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-project-open-btn {
+  margin: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-project-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex; /* <-- adicione isto */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.modal-project-container {
+  overflow-x: auto;
+  margin: auto;
+  height: fit-content;
+  border-radius: 5px;
+  max-height: 80vh;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.modal-project-title {
+  margin-top: 0;
+}
+
+.modal-project-label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.modal-project-input,
+.modal-project-select,
+.modal-project-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-project-submit-btn {
+  margin-top: 1.5rem;
+  background-color: #1f2937;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-project-submit-btn:hover {
+  background-color: #0e131a;
+}
+
+.modal-techs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: .5rem
+}
+
+.modal-tech-item {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem
+}
+
+.modal-project-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

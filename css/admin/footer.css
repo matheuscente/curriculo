@@ -1,0 +1,13 @@
+
+
+.admin-footer {
+    padding: 1rem;
+    background-color: #1f2937;
+    color: var(--c1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+

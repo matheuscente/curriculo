@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Desenvolvedor full stack no paraná, disponível para freelancer e buscando vaga júnior">
+    <title>Vicente -FullStack developer</title>
+    <link rel="preload" href="css/style.css" as="style" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="module" src="js/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="index-body">
+    <header class="menu">
+        <span class="logo"><a href="#inicio">Vicente Matheus</a></span>
+        <nav  class="header-list-conteiner nav-header" aria-label="navegação principal">
+            <button id="btn-mobile" aria-label="botão mostrar menu">
+                <span id="hamburguer"></span>
+            </button>
+            <ul class="header-list">
+                <li class="hover"><a class="btn-header-list" href="#experiencia">Experiência</a></li>
+                <li class="hover"><a class="btn-header-list" href="#formacao">Formação</a></li>
+                <li class="hover"><a class="btn-header-list" href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="apresentacao" aria-label="Apresentação do desenvolvedor">
+            <div class="foto-apresentacao">
+                <img class="foto" src="./img/perfil1.png" alt="retrato do vicente" width="437" height="571">
+            </div>
+            <div class="desc-apresentacao">
+                <h1>Desenvolvedor <br>FullStack</h1>
+                <span class="desc-local">Santo Antônio da Platina - PR 📍</span>
+            </div>
+        </article>
+
+        <article id="experiencia" class="experiencia" aria-labelledby="titulo-experiencia">
+            <h1 id="titulo-experiencia" class="titulo-maior">experiência</h1>
+
+            <div class="experiencia-conteiner">
+                <p class="p-principal">Desenvolvo projetos utilizando <strong>HTML</strong>,
+                    <strong>CSS</strong> <strong>JavaScript</strong> no front. No backend, utilizo <strong>Express com Node</strong> e o banco de dados que melhor se encaixar no projeto.</p>
+                <ul class="experiencia-lista">
+
+                </ul>
+
+            </div>
+        </article>
+
+
+
+        <article id="formacao" class="formacao-bg" aria-labelledby="titulo-formacao">
+            <div class="formacao-conteiner">
+                <h1 id="titulo-formacao" class="titulo-maior">formação</h1>
+                <div>
+                    <p class="p-principal">Atualmente estou cursando o 7 semestre em <strong>Engenharia de
+                            Software</strong>
+                        pela <strong>UniCesumar</strong>. Além disso me mantenho sempre atualizado com cursos intensivos
+                        online.
+                    </p>
+                    <div class="formacoes">
+                        <div class="formacoes-item">
+                            <span class="formacoes-item-span">bacharel</span>
+                            <h3 class="formacoes-item-titulo">Engenharia de Software</h3>
+                            <span class="formacoes-item-span">UniCesumar</span>
+                        </div>
+
+                    </div>
+
+                    <div class="conteiner-extra">
+                        <h3 class="extra-titulo extra-detalhe cursos">cursos intensivos</h3>
+                        <ul class="extra-item-conteiner">
+                            <li class="extra-item">
+                                <p>HTML e CSS para Iniciantes</p>
+                                <span class="extra-span">23h</span>
+                            </li>
+
+                            <li class="extra-item">
+                                <p>API REST com Node e Express</p>
+                                <span class="extra-span">30h</span>
+                            </li>
+                            
+                            <li class="extra-item">
+                                <p>JavaScript ES6 Completo</p>
+                                <span class="extra-span">47h</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="conteiner-extra">
+                        <h3 class="extra-titulo extra-detalhe idioma">idiomas</h3>
+                        <ul class="extra-item">
+                            <li>inglês <span class="extra-span">/ Básico</span></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer id="contato" class="footer-bg" aria-label="rodapé">
+        <div class="footer-conteiner">
+            <p class="p-principal">Estou disponível para novos projetos no momento. Entre em contato comigo e marcamos
+                uma conversa 👋
+            </p>
+            <ul class="footer-redes">
+                <li class="redes"><a
+                        href="https://api.whatsapp.com/send/?phone=43996770521&text&type=phone_number&app_absent=0"
+                        target="_blank"><img src="./img/whatsapp.svg" alt="whatsapp"></a></li>
+                <li class="redes"><a href="https://www.linkedin.com/in/vicente-dos-santos-b48805196/"
+                        target="_blank"><img src="./img/linkedin.svg" alt="linkedin"></a></li>
+                <li class="email">matheus31102001@gmail.com</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>
